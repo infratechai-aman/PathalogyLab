@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* ─── Emil Kowalski's animate skill: custom easing presets ─── */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);       /* Strong ease-out for UI enters/exits */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);   /* Strong ease-in-out for on-screen motion */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);    /* iOS-like fluid drawer curve */
+
+  /* Brand Tokens */
+  --brand-50:  #edf9f3;
+  --brand-100: #d7f2e4;
+  --brand-200: #b1e5cc;
+  --brand-300: #7dd2ae;
+  --brand-400: #46b88c;
+  --brand-500: #239c71;
+  --brand-600: #157e5b;
+  --brand-700: #116e45;
+  --brand-800: #0d5f3a;
+  --brand-900: #0a492e;
+  --brand-950: #052a1a;
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fcfdfd;
+  color: #1e293b;
+}
+
+/* ─── Ambient mesh background ─── */
+.ambient-bg {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(35, 156, 113, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 20%, rgba(23, 37, 84, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(70, 184, 140, 0.06) 0px, transparent 60%);
+}
+
+/* ─── Parallax sections ─── */
+.parallax-hero {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ─── Glass card ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Premium selection color ─── */
+::selection { background: #239c71; color: #fff; }
+
+/* ─── Animate-in utility (Emil Kowalski: use transform + opacity only) ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(35, 156, 113, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(35, 156, 113, 0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+.animate-marquee { animation: marquee 28s linear infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Emil Kowalski: prefers-reduced-motion — fewer/gentler, not zero ─── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-marquee,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+  /* Keep opacity fades — aid comprehension. Drop transform motion. */
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Emil: hover gating (touch fires false hovers on tap) ─── */
+@media (hover: none), (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ─── Scroll progress bar ─── */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #116e45, #46b88c, #34d399);
+  z-index: 9999;
+  transition: width 100ms linear;
+}
+
+/* ─── Number counter animation ─── */
+.counter-animate {
+  animation: fadeUp 0.6s var(--ease-out) both;
+}
+
+/* ─── Hover lift ─── */
+.hover-lift {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px -8px rgba(17, 110, 69, 0.14), 0 8px 16px -4px rgba(0,0,0,0.05);
+}
