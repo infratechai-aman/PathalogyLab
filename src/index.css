@@ -141,6 +141,18 @@ body {
   animation: fadeUp 0.6s var(--ease-out) both;
 }
 
+/* ─── Safe area inset (iPhone notch / Android nav bar) ─── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Mobile horizontal card scroll ─── */
+.mobile-cards-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-cards-scroll::-webkit-scrollbar { display: none; }
+
 /* ─── Hover lift ─── */
 .hover-lift {
   transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);

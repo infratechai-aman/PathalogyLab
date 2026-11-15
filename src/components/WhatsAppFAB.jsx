@@ -8,7 +8,7 @@ export default function WhatsAppFAB() {
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: 1.5, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed bottom-6 right-6 z-40 flex items-center"
+      className="sm:flex hidden fixed bottom-6 right-6 z-40 items-center"
       aria-label="Quick WhatsApp contact"
     >
       <motion.a

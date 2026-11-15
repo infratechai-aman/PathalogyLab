@@ -13,6 +13,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppFAB from './components/WhatsAppFAB';
 import BookingModal from './components/BookingModal';
+import MobileBottomBar from './components/MobileBottomBar';
 
 export default function App() {
   const [modal, setModal] = useState({ open: false, preset: '', mode: 'lab' });
@@ -34,7 +35,8 @@ export default function App() {
     <div className="ambient-bg min-h-screen">
       <Navbar onBooking={openBooking} />
 
-      <main>
+      {/* pb-24 on mobile so content not hidden behind sticky bottom bar */}
+      <main className="pb-24 sm:pb-0">
         <HeroSection onBooking={openBooking} />
         <ServicesSection onBooking={openBooking} onWhatsApp={openWhatsApp} />
         <PackagesSection onBooking={openBooking} />
@@ -47,6 +49,7 @@ export default function App() {
 
       <Footer />
       <WhatsAppFAB />
+      <MobileBottomBar onBooking={openBooking} isModalOpen={modal.open} />
 
       <BookingModal
         isOpen={modal.open}
