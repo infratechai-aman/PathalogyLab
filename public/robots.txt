@@ -1,0 +1,5 @@
+# Accurate Pathology Laboratory
+User-agent: *
+Allow: /
+
+Sitemap: https://accuratepathologylab.in/sitemap.xml
