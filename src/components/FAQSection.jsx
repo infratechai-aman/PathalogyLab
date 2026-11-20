@@ -63,7 +63,7 @@ function FAQItem({ faq }) {
 
 export default function FAQSection() {
   return (
-    <section className="py-10 sm:py-16 lg:py-20 bg-white/70 backdrop-blur-md border-t border-slate-200/60" id="faq">
+    <section className="py-10 sm:py-16 lg:py-20 bg-white/70 backdrop-blur-md" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <StaggerReveal className="text-center space-y-2 sm:space-y-3 mb-8 sm:mb-12">
           <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl font-extrabold text-[#0a1120] tracking-tight">

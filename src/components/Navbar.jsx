@@ -53,8 +53,8 @@ export default function Navbar({ onBooking }) {
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
         className={`sticky top-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/92 backdrop-blur-2xl shadow-[0_2px_20px_rgba(0,0,0,0.07)] border-b border-slate-200/70'
-            : 'bg-white/80 backdrop-blur-xl border-b border-slate-200/50'
+            ? 'bg-white/92 backdrop-blur-2xl shadow-[0_4px_24px_rgba(0,0,0,0.06)]'
+            : 'bg-white/70 backdrop-blur-xl'
         }`}
       >
         {/* ── DESKTOP / TABLET BAR ── */}

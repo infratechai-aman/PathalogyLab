@@ -134,7 +134,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #0a492e, #116e45, #239c71);
+  background: linear-gradient(90deg, #003b95, #024ebb, #16a34a);
   z-index: 9999;
   transition: width 100ms linear;
 }

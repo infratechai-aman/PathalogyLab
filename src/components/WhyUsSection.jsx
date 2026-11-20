@@ -18,7 +18,7 @@ const values = [
 
 export default function WhyUsSection({ onBooking }) {
   return (
-    <section className="py-10 sm:py-16 lg:py-24 bg-white/70 backdrop-blur-md border-t border-slate-200/60" id="why-us">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white/70 backdrop-blur-md" id="why-us">
       {/* Stats marquee strip */}
       <div className="bg-gradient-to-r from-[#003b95] via-[#024ebb] to-[#002866] py-3.5 sm:py-5 overflow-hidden mb-10 sm:mb-16">
         <div className="flex gap-8 sm:gap-16 animate-marquee whitespace-nowrap">

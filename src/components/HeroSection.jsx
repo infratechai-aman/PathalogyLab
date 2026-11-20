@@ -12,48 +12,37 @@ export default function HeroSection({ onBooking }) {
     <section className="relative overflow-hidden" id="hero">
 
       {/* ════════════════════════════════════════════════════════
-          MOBILE HERO (< sm) — Native app-grade experience
+          MOBILE HERO (< sm) — Full-screen immersive lab experience
           ════════════════════════════════════════════════════════ */}
-      <div className="sm:hidden relative">
-        {/* Full-bleed hero image with cinematic gradient overlay */}
-        <div className="relative w-full h-[220px] overflow-hidden">
+      <div className="sm:hidden relative min-h-[calc(100svh-64px)] flex flex-col justify-end overflow-hidden pb-6 pt-16">
+        {/* Full-screen hero image backdrop */}
+        <div className="absolute inset-0 z-0">
           <motion.img
             initial={{ scale: 1.08 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.2, ease: EASE_OUT }}
             src="/images/hero-lab.jpg"
             alt="Accurate Pathology Laboratory — modern diagnostic center in Hadapsar, Pune"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[center_20%]"
           />
-          {/* Three-layer gradient for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/30 via-transparent to-[#fcfdfd]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1120]/20 via-transparent to-transparent" />
-
-          {/* Location pill — frosted glass */}
-          <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.2 }}
-            className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-[6px] rounded-full bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
-          >
-            <span className="w-[6px] h-[6px] rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-[#0a1120] tracking-wide">Hadapsar, Pune • 24×7 Open</span>
-          </motion.div>
+          {/* Seamless cinematic multi-tier gradients */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-[#0a1120]/80 via-45% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent" />
         </div>
 
-        {/* Content — taut spacing, no fluff */}
-        <div className="px-5 -mt-3 relative z-10 pb-4">
-          {/* Headline — tight, impactful */}
+        {/* Content — docked over the cinematic gradient backdrop */}
+        <div className="px-5 relative z-10 space-y-4">
+          {/* Headline — high contrast & impactful */}
           <motion.h1
             initial={{ opacity: 0, y: enterY }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.08 }}
-            className="text-[1.6rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.12]"
+            className="text-[2rem] font-extrabold text-white tracking-[-0.035em] leading-[1.12]"
           >
             Accurate Diagnostics,{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #003b95 0%, #024ebb 50%, #16a34a 100%)',
+                background: 'linear-gradient(135deg, #60a5fa 0%, #38bdf8 45%, #4ade80 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -68,7 +57,7 @@ export default function HeroSection({ onBooking }) {
             initial={{ opacity: 0, y: enterY * 0.7 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.14 }}
-            className="mt-3 text-[13px] text-slate-500 leading-[1.55] tracking-[-0.01em]"
+            className="text-[13px] text-slate-200/90 leading-[1.55] tracking-[-0.01em] font-medium"
           >
             Free doorstep blood collection · 24/7 emergency service · Fast reports on WhatsApp across Hadapsar & Pune.
           </motion.p>
@@ -78,26 +67,26 @@ export default function HeroSection({ onBooking }) {
             initial={{ opacity: 0, y: enterY * 0.6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.2 }}
-            className="mt-5 space-y-2.5"
+            className="space-y-2.5 pt-1"
           >
             <motion.button
               whileTap={{ scale: 0.97 }}
               transition={EASE_SPRING}
               onClick={() => onBooking('General Test Booking')}
-              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[14px] bg-[#003b95] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_4px_16px_rgba(0,59,149,0.25)] active:shadow-[0_2px_8px_rgba(0,59,149,0.2)] transition-shadow duration-150"
+              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[16px] bg-gradient-to-r from-[#003b95] to-[#0256cc] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_8px_24px_rgba(2,86,204,0.35)] active:scale-[0.98] transition-transform"
             >
               <Calendar className="w-[18px] h-[18px]" />
               <span>Book a Test</span>
-              <ArrowRight className="w-4 h-4 opacity-60" />
+              <ArrowRight className="w-4 h-4 opacity-70" />
             </motion.button>
 
             <motion.button
               whileTap={{ scale: 0.97 }}
               transition={EASE_SPRING}
               onClick={() => onBooking('Home Sample Collection', 'home')}
-              className="w-full flex items-center justify-center gap-2 h-[48px] rounded-[14px] bg-white text-[#0a1120] font-semibold text-[14px] border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] active:bg-slate-50 transition-colors duration-150"
+              className="w-full flex items-center justify-center gap-2 h-[48px] rounded-[16px] bg-white/12 backdrop-blur-xl text-white font-semibold text-[14px] border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.15)] active:bg-white/20 transition-colors"
             >
-              <Home className="w-4 h-4 text-[#003b95]" />
+              <Home className="w-4 h-4 text-emerald-400" />
               <span>Home Collection</span>
             </motion.button>
           </motion.div>
@@ -107,7 +96,7 @@ export default function HeroSection({ onBooking }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.35 }}
-            className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between"
+            className="pt-3 border-t border-white/10 flex items-center justify-between text-slate-300"
           >
             {[
               { icon: Clock, label: '24×7 Service' },
@@ -115,10 +104,10 @@ export default function HeroSection({ onBooking }) {
               { icon: ShieldCheck, label: 'Reliable Results' },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-1.5">
-                <div className="w-[26px] h-[26px] rounded-[8px] bg-blue-50 flex items-center justify-center">
-                  <Icon className="w-[13px] h-[13px] text-[#003b95]" />
+                <div className="w-[24px] h-[24px] rounded-full bg-white/10 flex items-center justify-center">
+                  <Icon className="w-3 h-3 text-emerald-400" />
                 </div>
-                <span className="text-[10px] font-semibold text-slate-600 tracking-tight">{label}</span>
+                <span className="text-[10.5px] font-semibold text-slate-200 tracking-tight">{label}</span>
               </div>
             ))}
           </motion.div>
@@ -132,13 +121,13 @@ export default function HeroSection({ onBooking }) {
         {/* Soft ambient blobs — hidden on reduced-motion */}
         {!reduceMotion && (
           <>
-            <ParallaxLayer speed={0.12} className="absolute top-10 left-[20%] w-[500px] h-[500px] bg-[#edf9f3]/50 rounded-full blur-[140px] pointer-events-none -z-10" />
-            <ParallaxLayer speed={0.06} className="absolute -right-24 bottom-0 w-[400px] h-[400px] bg-[#d7f2e4]/30 rounded-full blur-[120px] pointer-events-none -z-10" />
+            <ParallaxLayer speed={0.12} className="absolute top-10 left-[20%] w-[540px] h-[540px] bg-blue-100/35 rounded-full blur-[140px] pointer-events-none -z-10" />
+            <ParallaxLayer speed={0.06} className="absolute -right-24 bottom-0 w-[440px] h-[440px] bg-emerald-100/30 rounded-full blur-[120px] pointer-events-none -z-10" />
           </>
         )}
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative pt-12 pb-12 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[500px]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative pt-12 pb-14 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center min-h-[560px] lg:min-h-[620px]">
 
             {/* ── Left: Copy ── */}
             <div className="lg:col-span-5 space-y-7 text-left z-10">
@@ -233,7 +222,7 @@ export default function HeroSection({ onBooking }) {
               </motion.div>
             </div>
 
-            {/* ── Right: Hero image ── */}
+            {/* ── Right: Hero image — Expanded & Grand ── */}
             <motion.div
               initial={{ opacity: 0, x: reduceMotion ? 0 : 32, scale: enterScale }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -241,34 +230,34 @@ export default function HeroSection({ onBooking }) {
               className="lg:col-span-7 relative flex justify-end items-center"
             >
               {!reduceMotion && (
-                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+                <ParallaxLayer speed={0.08} className="absolute -right-20 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
               )}
 
-              <div className="relative w-full max-w-[640px]">
-                {/* Image frame with organic shape */}
-                <div className="relative w-full h-[400px] lg:h-[520px] rounded-[24px] lg:rounded-l-[240px] lg:rounded-r-[24px] overflow-hidden bg-gradient-to-tr from-blue-50 via-white to-emerald-50/40 p-[6px] lg:p-2 border border-blue-200/40 shadow-[0_24px_64px_rgba(0,59,149,0.08)]">
-                  <div className="relative w-full h-full rounded-[20px] lg:rounded-l-[232px] lg:rounded-r-[20px] overflow-hidden bg-white shadow-inner">
+              <div className="relative w-full max-w-[760px] lg:w-[114%] lg:-mr-10 xl:-mr-14">
+                {/* Image frame — expansive and seamless */}
+                <div className="relative w-full h-[460px] lg:h-[580px] xl:h-[640px] rounded-[32px] lg:rounded-l-[280px] lg:rounded-r-[36px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_32px_80px_rgba(0,59,149,0.12)]">
+                  <div className="relative w-full h-full rounded-[26px] lg:rounded-l-[270px] lg:rounded-r-[28px] overflow-hidden bg-white shadow-inner">
                     <img
                       src="/images/hero-lab.jpg"
                       alt="Accurate Pathology — high-precision diagnostic laboratory in Hadapsar, Pune"
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-[center_28%]"
                     />
                     {/* Cinematic overlays */}
-                    <div className="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#003b95]/10 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/20 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#003b95]/12 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/25 via-transparent to-transparent pointer-events-none" />
 
                     {/* Floating credential badge */}
                     <motion.div
                       animate={reduceMotion ? {} : { y: [0, -5, 0] }}
                       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="absolute bottom-5 right-5 bg-white/92 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.1)] border border-white/70 flex items-center gap-3"
+                      className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white/95 backdrop-blur-2xl px-4 py-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-white/80 flex items-center gap-3.5"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#003b95] flex items-center justify-center">
-                        <ShieldCheck className="w-4 h-4" />
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#003b95] flex items-center justify-center shadow-sm">
+                        <ShieldCheck className="w-5 h-5" />
                       </div>
                       <div>
-                        <p className="text-[11px] font-bold text-[#0a1120] leading-tight tracking-tight">Reliable Results,</p>
-                        <p className="text-[10px] font-semibold text-slate-400">Caring Service</p>
+                        <p className="text-[12px] font-bold text-[#0a1120] leading-tight tracking-tight">Reliable Results,</p>
+                        <p className="text-[10px] font-semibold text-slate-500">Caring Service</p>
                       </div>
                     </motion.div>
                   </div>

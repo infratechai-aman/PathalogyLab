@@ -13,7 +13,7 @@ const quickLinks = [
 
 export default function ContactSection() {
   return (
-    <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/80 border-t border-slate-200/80" id="contact">
+    <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/80" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ═══ MOBILE LAYOUT ═══ */}
