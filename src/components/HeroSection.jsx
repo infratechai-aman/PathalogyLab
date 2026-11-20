@@ -126,8 +126,8 @@ export default function HeroSection({ onBooking }) {
           </>
         )}
 
-        <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-6 lg:px-10 xl:px-14 relative py-6 lg:py-10 xl:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-0 lg:min-h-[calc(100vh-100px)] lg:max-h-[860px]">
+        <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-6 lg:px-10 xl:px-14 relative py-8 lg:py-12 xl:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-0 lg:min-h-[calc(100vh-80px)] lg:max-h-[960px]">
 
             {/* ── Left: Copy ── */}
             <div className="lg:col-span-5 xl:col-span-5 space-y-6 lg:space-y-7 text-left z-10">
@@ -233,10 +233,10 @@ export default function HeroSection({ onBooking }) {
                 <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
               )}
 
-              <div className="relative w-full max-w-[860px] xl:max-w-[940px] 2xl:max-w-[1020px]">
-                {/* Image frame — fluid height clamp so it never overflows laptop and expands on desktop */}
-                <div className="relative w-full h-[clamp(420px,56vh,640px)] xl:h-[clamp(460px,58vh,680px)] rounded-[28px] lg:rounded-l-[220px] xl:rounded-l-[260px] lg:rounded-r-[32px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
-                  <div className="relative w-full h-full rounded-[24px] lg:rounded-l-[212px] xl:rounded-l-[252px] lg:rounded-r-[26px] overflow-hidden bg-white shadow-inner">
+              <div className="relative w-full max-w-[880px] xl:max-w-[960px] 2xl:max-w-[1060px]">
+                {/* Image frame — taller expansive height and seamless presentation */}
+                <div className="relative w-full h-[clamp(480px,65vh,720px)] xl:h-[clamp(540px,70vh,800px)] 2xl:h-[840px] rounded-[28px] lg:rounded-l-[260px] xl:rounded-l-[300px] lg:rounded-r-[36px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
+                  <div className="relative w-full h-full rounded-[24px] lg:rounded-l-[252px] xl:rounded-l-[292px] lg:rounded-r-[30px] overflow-hidden bg-white shadow-inner">
                     <img
                       src="/images/hero-lab.jpg"
                       alt="Accurate Pathology — high-precision diagnostic laboratory in Hadapsar, Pune"
@@ -245,21 +245,6 @@ export default function HeroSection({ onBooking }) {
                     {/* Cinematic overlays */}
                     <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#003b95]/12 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/25 via-transparent to-transparent pointer-events-none" />
-
-                    {/* Floating credential badge — bottom-left so it never overlaps WhatsApp FAB */}
-                    <motion.div
-                      animate={reduceMotion ? {} : { y: [0, -5, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="absolute bottom-5 left-5 lg:bottom-6 lg:left-8 bg-white/95 backdrop-blur-2xl px-4 py-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-white/80 flex items-center gap-3.5 z-10"
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#003b95] flex items-center justify-center shadow-sm">
-                        <ShieldCheck className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="text-[12px] font-bold text-[#0a1120] leading-tight tracking-tight">Reliable Results,</p>
-                        <p className="text-[10px] font-semibold text-slate-500">Caring Service</p>
-                      </div>
-                    </motion.div>
                   </div>
                 </div>
               </div>
