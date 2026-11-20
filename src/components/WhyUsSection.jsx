@@ -89,8 +89,8 @@ export default function WhyUsSection({ onBooking }) {
               <motion.img
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdEvRu1W6VzulOuiv_dcndLN4clLeOXumu1Jq7iQJSsTkdss_UpsD2f5Mqv9Pvl63RYHTHCAyCQAZHCOIH8S8uXxw4lf0yTSvr4H0n-63zXoxfGLP28LGwTh0cWbZkFeeKf2q7WeZbCkYyX6fz3_WQG36txqyYiZ8RhXHkSgPAjhNYy_Nj-KU99EtVrim-kq5UPKjw-gA0lmT1ZPhKJLzn5aMLtkV3nI066pYzC-p1M29xfEIuqNq4Q"
-                alt="Lab technician"
+                src="/images/hero-lab.jpg"
+                alt="Accurate Pathology diagnostic laboratory"
                 className="w-full h-full object-cover"
               />
               <motion.div

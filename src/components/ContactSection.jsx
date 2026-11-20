@@ -47,8 +47,8 @@ export default function ContactSection() {
           >
             <div className="relative w-full h-36 overflow-hidden bg-slate-100">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtJCtXA0XLNwTIKlgOcuVBxg10xkbhBF1WMvkD-P3CUt7qL_yfdwYLrQgB8rL_MAx5LhRKUzW5fFM1AOxSs5YAkvOJv18m2CHfrp4oEaVtCRtwls6Kw-gKssdJROMndAFmajAlQoSVV4h7QeZOZ8agpLGpywZQebe65oGjZgKMvuyhL0wJN33L_JYt4R2sBKAv0Uhszj6378htyH20Fx1hJ2623Avfq7gtEKObQbUp"
-                alt="Map to Accurate Pathology Lab"
+                src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:green%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
+                alt="Map to Accurate Pathology Lab Hadapsar"
                 className="w-full h-full object-cover opacity-85"
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -148,8 +148,8 @@ export default function ContactSection() {
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-4 border border-slate-200/90 shadow-sm space-y-3">
               <div className="relative w-full h-32 rounded-2xl bg-slate-100 overflow-hidden border border-slate-200">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtJCtXA0XLNwTIKlgOcuVBxg10xkbhBF1WMvkD-P3CUt7qL_yfdwYLrQgB8rL_MAx5LhRKUzW5fFM1AOxSs5YAkvOJv18m2CHfrp4oEaVtCRtwls6Kw-gKssdJROMndAFmajAlQoSVV4h7QeZOZ8agpLGpywZQebe65oGjZgKMvuyhL0wJN33L_JYt4R2sBKAv0Uhszj6378htyH20Fx1hJ2623Avfq7gtEKObQbUp"
-                  alt="Map"
+                  src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:green%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
+                  alt="Map to Accurate Lab Hadapsar"
                   className="w-full h-full object-cover opacity-85"
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

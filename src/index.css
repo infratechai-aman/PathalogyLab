@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-/* ─── Emil Kowalski's animate skill: custom easing presets ─── */
+/* ─── Easing presets (Emil Kowalski: strong curves, not CSS built-ins) ─── */
 :root {
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);       /* Strong ease-out for UI enters/exits */
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);   /* Strong ease-in-out for on-screen motion */
-  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);    /* iOS-like fluid drawer curve */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
-  /* Brand Tokens */
+  /* Brand Palette — from logo: deep green + dark navy */
   --brand-50:  #edf9f3;
   --brand-100: #d7f2e4;
   --brand-200: #b1e5cc;
@@ -18,13 +18,15 @@
   --brand-800: #0d5f3a;
   --brand-900: #0a492e;
   --brand-950: #052a1a;
+  --dark:      #0a1120;
+  --surface:   #fcfdfd;
 }
 
-/* Smooth custom scrollbar */
-::-webkit-scrollbar { width: 7px; }
-::-webkit-scrollbar-track { background: #f8fafc; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+/* ─── Minimal scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
 
 html { scroll-behavior: smooth; }
 
@@ -32,16 +34,16 @@ body {
   font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fcfdfd;
+  background-color: var(--surface);
   color: #1e293b;
 }
 
-/* ─── Ambient mesh background ─── */
+/* ─── Ambient mesh (subtle, branded) ─── */
 .ambient-bg {
   background-image:
-    radial-gradient(at 0% 0%, rgba(35, 156, 113, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 20%, rgba(23, 37, 84, 0.05) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(70, 184, 140, 0.06) 0px, transparent 60%);
+    radial-gradient(at 0% 0%, rgba(17, 110, 69, 0.06) 0px, transparent 50%),
+    radial-gradient(at 100% 15%, rgba(10, 17, 32, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(35, 156, 113, 0.05) 0px, transparent 55%);
 }
 
 /* ─── Parallax sections ─── */
@@ -50,18 +52,18 @@ body {
   will-change: transform;
 }
 
-/* ─── Glass card ─── */
+/* ─── Glass card — refined ─── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(20px) saturate(1.3);
-  -webkit-backdrop-filter: blur(20px) saturate(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
 
-/* ─── Premium selection color ─── */
-::selection { background: #239c71; color: #fff; }
+/* ─── Selection ─── */
+::selection { background: #116e45; color: #fff; }
 
-/* ─── Animate-in utility (Emil Kowalski: use transform + opacity only) ─── */
+/* ─── Keyframes (transform + opacity only — Emil Kowalski) ─── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -80,11 +82,11 @@ body {
 }
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+  50%       { transform: translateY(-8px); }
 }
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(35, 156, 113, 0.4); }
-  50%       { box-shadow: 0 0 0 12px rgba(35, 156, 113, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(17, 110, 69, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(17, 110, 69, 0); }
 }
 @keyframes shimmer {
   0%   { background-position: -200% center; }
@@ -99,26 +101,25 @@ body {
 .animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
 .animate-marquee { animation: marquee 28s linear infinite; }
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
 }
 
-/* ─── Emil Kowalski: prefers-reduced-motion — fewer/gentler, not zero ─── */
+/* ─── Reduced motion — fewer/gentler, not zero (Emil + Apple) ─── */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-marquee,
   .animate-pulse-glow {
     animation: none !important;
   }
-  /* Keep opacity fades — aid comprehension. Drop transform motion. */
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
 }
 
-/* ─── Emil: hover gating (touch fires false hovers on tap) ─── */
+/* ─── Hover gating — touch fires false hovers (Emil) ─── */
 @media (hover: none), (pointer: coarse) {
   .hover-lift:hover {
     transform: none;
@@ -130,34 +131,34 @@ body {
 #scroll-progress-bar {
   position: fixed;
   top: 0; left: 0;
-  height: 2.5px;
-  background: linear-gradient(90deg, #116e45, #46b88c, #34d399);
+  height: 2px;
+  background: linear-gradient(90deg, #0a492e, #116e45, #239c71);
   z-index: 9999;
   transition: width 100ms linear;
 }
 
-/* ─── Number counter animation ─── */
+/* ─── Counter ─── */
 .counter-animate {
   animation: fadeUp 0.6s var(--ease-out) both;
 }
 
-/* ─── Safe area inset (iPhone notch / Android nav bar) ─── */
+/* ─── Safe area inset (iPhone / Android nav) ─── */
 .safe-area-bottom {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ─── Mobile horizontal card scroll ─── */
+/* ─── Mobile scroll containers ─── */
 .mobile-cards-scroll {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 .mobile-cards-scroll::-webkit-scrollbar { display: none; }
 
-/* ─── Hover lift ─── */
+/* ─── Hover lift (desktop only) ─── */
 .hover-lift {
   transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
 .hover-lift:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 48px -8px rgba(17, 110, 69, 0.14), 0 8px 16px -4px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 48px -8px rgba(10, 73, 46, 0.12), 0 8px 16px -4px rgba(0,0,0,0.04);
 }

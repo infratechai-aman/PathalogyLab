@@ -1,215 +1,231 @@
-import { motion } from 'framer-motion';
-import { Calendar, Home, Clock, MessageCircle, ShieldCheck, ArrowRight, MapPin, Phone } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Calendar, Home, Clock, MessageCircle, ShieldCheck, ArrowRight, Microscope } from 'lucide-react';
 import { EASE_OUT, EASE_SPRING, ParallaxLayer } from '../animations';
 
+/* ── Hero Section — premium, unslop, Apple-design principles ── */
 export default function HeroSection({ onBooking }) {
+  const reduceMotion = useReducedMotion();
+  const enterY = reduceMotion ? 0 : 18;
+  const enterScale = reduceMotion ? 1 : 0.97;
+
   return (
     <section className="relative overflow-hidden" id="hero">
-      {/* ═══ MOBILE HERO (< sm) — App-native full-screen feel ═══ */}
-      <div className="sm:hidden">
-        {/* Compact hero image banner with gradient overlay */}
-        <div className="relative w-full h-[200px] overflow-hidden">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdEvRu1W6VzulOuiv_dcndLN4clLeOXumu1Jq7iQJSsTkdss_UpsD2f5Mqv9Pvl63RYHTHCAyCQAZHCOIH8S8uXxw4lf0yTSvr4H0n-63zXoxfGLP28LGwTh0cWbZkFeeKf2q7WeZbCkYyX6fz3_WQG36txqyYiZ8RhXHkSgPAjhNYy_Nj-KU99EtVrim-kq5UPKjw-gA0lmT1ZPhKJLzn5aMLtkV3nI066pYzC-p1M29xfEIuqNq4Q"
-            alt="Accurate Pathology Laboratory"
+
+      {/* ════════════════════════════════════════════════════════
+          MOBILE HERO (< sm) — Native app-grade experience
+          ════════════════════════════════════════════════════════ */}
+      <div className="sm:hidden relative">
+        {/* Full-bleed hero image with cinematic gradient overlay */}
+        <div className="relative w-full h-[220px] overflow-hidden">
+          <motion.img
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.2, ease: EASE_OUT }}
+            src="/images/hero-lab.jpg"
+            alt="Accurate Pathology Laboratory — modern diagnostic center in Hadapsar, Pune"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#fcfdfd]" />
-          {/* Floating location pill on image */}
+          {/* Three-layer gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1120]/30 via-transparent to-[#fcfdfd]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1120]/20 via-transparent to-transparent" />
+
+          {/* Location pill — frosted glass */}
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: EASE_OUT }}
-            className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-white/80 shadow-sm"
+            transition={{ duration: 0.35, ease: EASE_OUT, delay: 0.2 }}
+            className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-[6px] rounded-full bg-white/85 backdrop-blur-xl border border-white/60 shadow-[0_4px_12px_rgba(0,0,0,0.08)]"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-slate-800 tracking-wide">Hadapsar, Pune • Open 24×7</span>
+            <span className="w-[6px] h-[6px] rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-bold text-[#0a1120] tracking-wide">Hadapsar, Pune • 24×7 Open</span>
           </motion.div>
         </div>
 
-        {/* Content area — tight, app-like */}
-        <div className="px-5 -mt-4 relative z-10 space-y-5 pb-6">
-          {/* Headline */}
+        {/* Content — taut spacing, no fluff */}
+        <div className="px-5 -mt-3 relative z-10 pb-4">
+          {/* Headline — tight, impactful */}
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: enterY }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.05 }}
-            className="text-[1.65rem] font-extrabold text-[#0a1120] tracking-[-0.03em] leading-[1.15]"
+            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.08 }}
+            className="text-[1.6rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.12]"
           >
-            Accurate Testing{' '}
-            <span className="block">
-              for a{' '}
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #116e45 0%, #239c71 60%, #34d399 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Healthier You
-              </span>
+            Accurate Diagnostics,{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #0a492e 0%, #116e45 50%, #239c71 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Healthier You.
             </span>
           </motion.h1>
 
-          {/* Subtitle — shorter for mobile */}
+          {/* Subtitle — one line of real value */}
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: enterY * 0.7 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.1 }}
-            className="text-[13px] text-slate-600 leading-relaxed"
+            transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.14 }}
+            className="mt-3 text-[13px] text-slate-500 leading-[1.55] tracking-[-0.01em]"
           >
-            Home sample collection, 24×7 service & reports on WhatsApp — trusted by Hadapsar families.
+            Home sample collection · 24/7 service · Reports on WhatsApp — trusted by 5,000+ Hadapsar families.
           </motion.p>
 
-          {/* CTA Buttons — full-width, tall, prominent */}
+          {/* CTA Stack — large touch targets, 48px+ height */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: enterY * 0.6 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.15 }}
-            className="space-y-2.5"
+            transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.2 }}
+            className="mt-5 space-y-2.5"
           >
             <motion.button
               whileTap={{ scale: 0.97 }}
               transition={EASE_SPRING}
               onClick={() => onBooking('General Test Booking')}
-              className="w-full flex items-center justify-center gap-2.5 py-[14px] rounded-2xl bg-[#0a492e] text-white font-bold text-[14px] shadow-lg shadow-green-900/20 active:scale-[0.98] transition-transform"
+              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[14px] bg-[#0a492e] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_4px_16px_rgba(10,73,46,0.25)] active:shadow-[0_2px_8px_rgba(10,73,46,0.2)] transition-shadow duration-150"
             >
               <Calendar className="w-[18px] h-[18px]" />
               <span>Book a Test</span>
-              <ArrowRight className="w-4 h-4 opacity-70" />
+              <ArrowRight className="w-4 h-4 opacity-60" />
             </motion.button>
 
             <motion.button
               whileTap={{ scale: 0.97 }}
               transition={EASE_SPRING}
               onClick={() => onBooking('Home Sample Collection', 'home')}
-              className="w-full flex items-center justify-center gap-2 py-[13px] rounded-2xl bg-white text-slate-800 font-semibold text-[13px] border border-slate-200 shadow-sm active:scale-[0.98] transition-transform"
+              className="w-full flex items-center justify-center gap-2 h-[48px] rounded-[14px] bg-white text-[#0a1120] font-semibold text-[14px] border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] active:bg-slate-50 transition-colors duration-150"
             >
               <Home className="w-4 h-4 text-[#116e45]" />
               <span>Home Collection</span>
             </motion.button>
           </motion.div>
 
-          {/* Trust badges — horizontal row */}
+          {/* Trust strip — compact, evenly spaced */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.25 }}
-            className="flex items-center justify-between pt-4 border-t border-slate-200/60"
+            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.35 }}
+            className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between"
           >
             {[
-              { icon: Clock, text: '24×7 Service' },
-              { icon: MessageCircle, text: 'WhatsApp Reports' },
-              { icon: ShieldCheck, text: 'Reliable & Accurate' },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-1.5">
-                <div className="w-6 h-6 rounded-lg bg-green-50 flex items-center justify-center">
-                  <Icon className="w-3 h-3 text-[#116e45]" />
+              { icon: Clock, label: '24×7 Service' },
+              { icon: MessageCircle, label: 'WhatsApp Reports' },
+              { icon: ShieldCheck, label: 'Reliable Results' },
+            ].map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <div className="w-[26px] h-[26px] rounded-[8px] bg-[#edf9f3] flex items-center justify-center">
+                  <Icon className="w-[13px] h-[13px] text-[#116e45]" />
                 </div>
-                <span className="text-[10px] font-semibold text-slate-700 leading-tight">{text}</span>
+                <span className="text-[10px] font-semibold text-slate-600 tracking-tight">{label}</span>
               </div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* ═══ DESKTOP/TABLET HERO (≥ sm) — Original layout ═══ */}
+      {/* ════════════════════════════════════════════════════════
+          DESKTOP / TABLET HERO (≥ sm) — Premium layout
+          ════════════════════════════════════════════════════════ */}
       <div className="hidden sm:block">
-        {/* Ambient parallax glow blobs */}
-        <ParallaxLayer speed={0.15} className="absolute top-6 left-1/4 w-96 h-96 bg-green-100/40 rounded-full blur-[120px] pointer-events-none -z-10" />
-        <ParallaxLayer speed={0.08} className="absolute -right-20 bottom-10 w-72 h-72 bg-teal-100/30 rounded-full blur-[100px] pointer-events-none -z-10" />
+        {/* Soft ambient blobs — hidden on reduced-motion */}
+        {!reduceMotion && (
+          <>
+            <ParallaxLayer speed={0.12} className="absolute top-10 left-[20%] w-[500px] h-[500px] bg-[#edf9f3]/50 rounded-full blur-[140px] pointer-events-none -z-10" />
+            <ParallaxLayer speed={0.06} className="absolute -right-24 bottom-0 w-[400px] h-[400px] bg-[#d7f2e4]/30 rounded-full blur-[120px] pointer-events-none -z-10" />
+          </>
+        )}
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative pt-10 pb-10 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center min-h-[480px]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative pt-12 pb-12 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[500px]">
 
-            {/* Left content */}
-            <div className="lg:col-span-5 space-y-6 text-left z-10 py-2">
-              {/* Location Badge */}
+            {/* ── Left: Copy ── */}
+            <div className="lg:col-span-5 space-y-7 text-left z-10">
+              {/* Status badge */}
               <motion.div
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: EASE_OUT }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200/80 text-green-800 text-[11px] font-semibold tracking-wide"
+                transition={{ duration: 0.45, ease: EASE_OUT }}
+                className="inline-flex items-center gap-2 px-3.5 py-[7px] rounded-full bg-[#edf9f3] border border-[#b1e5cc]/60 text-[#0a492e] text-[11px] font-bold tracking-wide"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-[7px] h-[7px] rounded-full bg-emerald-500 animate-pulse" />
                 <span>Hadapsar, Pune • Open 24×7</span>
               </motion.div>
 
               {/* Headline */}
               <motion.h1
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: enterY * 1.4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.08 }}
-                className="text-5xl lg:text-6xl font-extrabold text-[#0a1120] tracking-[-0.03em] leading-[1.1]"
+                transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.06 }}
+                className="text-[2.75rem] lg:text-[3.5rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
               >
-                Accurate Testing{' '}
-                <span className="block">
-                  for a{' '}
+                Accurate Diagnostics,{' '}
+                <span className="block mt-1">
                   <span
                     style={{
-                      background: 'linear-gradient(135deg, #116e45 0%, #239c71 60%, #34d399 100%)',
+                      background: 'linear-gradient(135deg, #0a492e 0%, #116e45 40%, #239c71 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                     }}
                   >
-                    Healthier You
+                    Healthier You.
                   </span>
                 </span>
               </motion.h1>
 
               {/* Subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.15 }}
-                className="text-base text-slate-600 max-w-lg font-normal leading-relaxed"
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
+                className="text-[15px] lg:text-base text-slate-500 max-w-md leading-[1.65] tracking-[-0.01em]"
               >
-                Trusted pathology services with home sample collection, 24×7 availability, and timely reports — delivered straight to your WhatsApp.
+                Trusted pathology services with home sample collection, 24/7 availability, and reports delivered straight to your WhatsApp.
               </motion.p>
 
               {/* CTAs */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.22 }}
-                className="pt-1 flex flex-row items-center gap-3"
+                transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.18 }}
+                className="flex items-center gap-3"
               >
                 <motion.button
                   whileTap={{ scale: 0.97 }}
                   transition={EASE_SPRING}
                   onClick={() => onBooking('General Test Booking')}
-                  className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#0a492e] text-white font-bold text-sm shadow-lg shadow-green-900/20 active:scale-95 transition-transform duration-150"
+                  className="flex items-center gap-2.5 px-7 py-3.5 rounded-[14px] bg-[#0a492e] text-white font-bold text-sm tracking-[-0.01em] shadow-[0_4px_16px_rgba(10,73,46,0.2)] hover:shadow-[0_8px_24px_rgba(10,73,46,0.25)] transition-shadow duration-200"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Book a Test</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 opacity-50" />
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.97 }}
                   transition={EASE_SPRING}
                   onClick={() => onBooking('Home Sample Collection', 'home')}
-                  className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white text-slate-800 font-semibold text-sm border border-slate-200 shadow-sm active:scale-95 transition-transform duration-150"
+                  className="flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-white text-[#0a1120] font-semibold text-sm border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] hover:border-[#b1e5cc] hover:bg-[#fcfefd] transition-all duration-200"
                 >
                   <Home className="w-4 h-4 text-[#116e45]" />
                   <span>Home Collection</span>
                 </motion.button>
               </motion.div>
 
-              {/* Trust badges */}
+              {/* Trust row */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.35 }}
-                className="pt-5 border-t border-slate-200/70 flex flex-wrap items-center gap-8 text-slate-700"
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
+                className="pt-6 border-t border-slate-100 flex items-center gap-7 text-slate-600"
               >
                 {[
                   { icon: Clock, text: '24×7 Service' },
                   { icon: MessageCircle, text: 'Reports on WhatsApp' },
                   { icon: ShieldCheck, text: 'Reliable & Accurate' },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} className="flex items-center gap-1.5 text-xs font-semibold tracking-tight">
+                  <div key={text} className="flex items-center gap-2 text-xs font-semibold tracking-tight">
                     <Icon className="w-3.5 h-3.5 text-[#116e45]" />
                     <span>{text}</span>
                   </div>
@@ -217,38 +233,42 @@ export default function HeroSection({ onBooking }) {
               </motion.div>
             </div>
 
-            {/* Right Hero Visual */}
+            {/* ── Right: Hero image ── */}
             <motion.div
-              initial={{ opacity: 0, x: 40, scale: 0.97 }}
+              initial={{ opacity: 0, x: reduceMotion ? 0 : 32, scale: enterScale }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.1 }}
+              transition={{ duration: 0.65, ease: EASE_OUT, delay: 0.08 }}
               className="lg:col-span-7 relative flex justify-end items-center"
             >
-              <ParallaxLayer speed={0.1} className="absolute -right-20 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-green-100/60 via-emerald-50/50 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+              {!reduceMotion && (
+                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-gradient-to-br from-[#edf9f3]/60 via-[#d7f2e4]/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+              )}
 
-              <div className="relative w-full flex justify-end items-center py-2">
-                <div className="relative w-full max-w-[620px] h-[420px] lg:h-[560px] rounded-3xl lg:rounded-l-[280px] lg:rounded-r-3xl overflow-hidden p-2 lg:p-3 bg-gradient-to-tr from-green-100/80 via-white/90 to-green-50/60 border border-green-200/60 shadow-[0_20px_50px_rgba(17,110,69,0.08)] group">
-                  <div className="relative w-full h-full rounded-2xl lg:rounded-l-[260px] lg:rounded-r-2xl overflow-hidden bg-white shadow-inner">
+              <div className="relative w-full max-w-[640px]">
+                {/* Image frame with organic shape */}
+                <div className="relative w-full h-[400px] lg:h-[520px] rounded-[24px] lg:rounded-l-[240px] lg:rounded-r-[24px] overflow-hidden bg-gradient-to-tr from-[#edf9f3] via-white to-[#d7f2e4]/40 p-[6px] lg:p-2 border border-[#b1e5cc]/40 shadow-[0_24px_64px_rgba(10,73,46,0.08)]">
+                  <div className="relative w-full h-full rounded-[20px] lg:rounded-l-[232px] lg:rounded-r-[20px] overflow-hidden bg-white shadow-inner">
                     <img
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDdEvRu1W6VzulOuiv_dcndLN4clLeOXumu1Jq7iQJSsTkdss_UpsD2f5Mqv9Pvl63RYHTHCAyCQAZHCOIH8S8uXxw4lf0yTSvr4H0n-63zXoxfGLP28LGwTh0cWbZkFeeKf2q7WeZbCkYyX6fz3_WQG36txqyYiZ8RhXHkSgPAjhNYy_Nj-KU99EtVrim-kq5UPKjw-gA0lmT1ZPhKJLzn5aMLtkV3nI066pYzC-p1M29xfEIuqNq4Q"
-                      alt="Accurate Pathology high-precision clinical laboratory"
+                      src="/images/hero-lab.jpg"
+                      alt="Accurate Pathology — high-precision diagnostic laboratory in Hadapsar, Pune"
                       className="w-full h-full object-cover object-center"
                     />
-                    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-green-900/10 via-green-500/5 to-transparent pointer-events-none hidden lg:block" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+                    {/* Cinematic overlays */}
+                    <div className="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#0a492e]/12 via-[#116e45]/4 to-transparent pointer-events-none hidden lg:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/20 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Floating badge */}
+                    {/* Floating credential badge */}
                     <motion.div
-                      animate={{ y: [0, -6, 0] }}
-                      transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex absolute bottom-5 right-5 bg-white/90 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-white/90 items-center gap-3"
+                      animate={reduceMotion ? {} : { y: [0, -5, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="absolute bottom-5 right-5 bg-white/92 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.1)] border border-white/70 flex items-center gap-3"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-green-50 text-[#116e45] flex items-center justify-center shadow-inner">
+                      <div className="w-9 h-9 rounded-xl bg-[#edf9f3] text-[#116e45] flex items-center justify-center">
                         <ShieldCheck className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-[#0a1120] leading-tight">Reliable Results,</p>
-                        <p className="text-[11px] font-semibold text-slate-500">Caring Service</p>
+                        <p className="text-[11px] font-bold text-[#0a1120] leading-tight tracking-tight">Reliable Results,</p>
+                        <p className="text-[10px] font-semibold text-slate-400">Caring Service</p>
                       </div>
                     </motion.div>
                   </div>
