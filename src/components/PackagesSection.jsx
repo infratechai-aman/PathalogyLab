@@ -80,27 +80,27 @@ export default function PackagesSection({ onBooking }) {
   );
 
   return (
-    <section className="py-20 lg:py-28 relative overflow-hidden" id="packages">
+    <section className="py-10 sm:py-20 lg:py-28 relative overflow-hidden" id="packages">
       {/* Ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-green-200/25 via-emerald-100/20 to-transparent rounded-full blur-[140px] pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <StaggerReveal className="text-center max-w-3xl mx-auto space-y-3 mb-10">
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/60 border border-green-200 text-green-800 text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5 text-[#116e45]" />
+        <StaggerReveal className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 mb-6 sm:mb-10">
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-green-100/60 border border-green-200 text-green-800 text-[10px] sm:text-xs font-bold uppercase tracking-widest">
+            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#116e45]" />
             <span>Health Checkup Packages</span>
           </motion.div>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a1120] tracking-[-0.03em]">
+          <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-[#0a1120] tracking-[-0.03em]">
             Popular Tests &amp; Wellness Panels
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Curated by senior pathologists for comprehensive preventative care, quick home collection, and fast turnaround.
+          <motion.p variants={fadeUp} className="text-slate-600 text-[12px] sm:text-sm lg:text-base leading-relaxed">
+            Curated by senior pathologists for comprehensive preventative care.
           </motion.p>
         </StaggerReveal>
 
         {/* Filter Tabs */}
-        <RevealSection className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12">
+        <RevealSection className="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 flex-nowrap sm:flex-wrap overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 mb-6 sm:mb-12 mobile-cards-scroll">
           {filters.map((f) => (
             <motion.button
               key={f.value}
@@ -108,7 +108,7 @@ export default function PackagesSection({ onBooking }) {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', duration: 0.2, bounce: 0.3 }}
-              className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-200 whitespace-nowrap shrink-0 ${
                 activeFilter === f.value
                   ? 'bg-[#0d5f3a] text-white shadow-md shadow-green-900/10'
                   : 'bg-white/80 hover:bg-white text-slate-700 border border-slate-200/80 hover:border-green-300'
@@ -276,24 +276,25 @@ export default function PackagesSection({ onBooking }) {
         </motion.div>
 
         {/* Quick tests strip */}
-        <RevealSection delay={0.1} className="mt-10 p-5 sm:p-7 rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-green-100 text-green-800 flex items-center justify-center shrink-0">
-                <TestTube className="w-4 h-4" />
+        {/* Quick tests strip — horizontal scroll on mobile */}
+        <RevealSection delay={0.1} className="mt-6 sm:mt-10 p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-green-100 text-green-800 flex items-center justify-center shrink-0">
+                <TestTube className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-[#0a1120]">Looking for individual blood tests?</p>
-                <p className="text-xs text-slate-500">Pick any test with home visit across Hadapsar:</p>
+                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0a1120]">Individual blood tests</p>
+                <p className="text-[10px] sm:text-xs text-slate-500 hidden sm:block">Pick any test with home visit across Hadapsar:</p>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto mobile-cards-scroll -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap pb-1 sm:pb-0">
               {quickTests.map((t) => (
                 <motion.button
                   key={t.name}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => onBooking(t.key)}
-                  className="px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:border-green-600 hover:text-[#116e45] transition-all active:scale-95"
+                  className="px-3 sm:px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-[11px] sm:text-xs font-semibold text-slate-700 transition-all active:scale-95 whitespace-nowrap shrink-0"
                 >
                   {t.name} ({t.price})
                 </motion.button>
@@ -301,9 +302,9 @@ export default function PackagesSection({ onBooking }) {
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={() => onBooking('General Diagnostic Test')}
-                className="px-4 py-2 rounded-xl bg-[#116e45] text-white text-xs font-semibold hover:bg-[#0d5f3a] transition-all shadow-sm flex items-center gap-1.5 active:scale-95"
+                className="px-3.5 sm:px-4 py-2 rounded-xl bg-[#116e45] text-white text-[11px] sm:text-xs font-semibold transition-all shadow-sm flex items-center gap-1.5 active:scale-95 whitespace-nowrap shrink-0"
               >
-                <span>+ View All Tests</span>
+                <span>+ All Tests</span>
               </motion.button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Phone, MapPin, Clock, FlaskConical, ArrowUpRight } from 'lucide-react';
+import { Phone, MapPin, Clock, FlaskConical, ArrowUpRight, Navigation } from 'lucide-react';
 import { StaggerReveal, RevealSection, fadeUp } from '../animations';
 
 const quickLinks = [
@@ -13,9 +13,83 @@ const quickLinks = [
 
 export default function ContactSection() {
   return (
-    <section className="py-16 lg:py-20 bg-slate-50/80 border-t border-slate-200/80" id="contact">
+    <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/80 border-t border-slate-200/80" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
+
+        {/* ═══ MOBILE LAYOUT ═══ */}
+        <div className="sm:hidden space-y-5">
+          {/* Call CTA — most important on mobile */}
+          <motion.a
+            href="tel:+918840658081"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm active:scale-[0.98] transition-transform"
+          >
+            <div className="w-11 h-11 rounded-xl bg-green-50 border border-green-100 text-[#116e45] flex items-center justify-center shrink-0">
+              <Phone className="w-5 h-5" />
+            </div>
+            <div className="flex-1">
+              <p className="text-[14px] font-bold text-[#0a1120]">+91 88406 58081</p>
+              <p className="text-[11px] text-slate-500">Tap to call now</p>
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-slate-400 shrink-0" />
+          </motion.a>
+
+          {/* Map + Address card */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.05 }}
+            className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden"
+          >
+            <div className="relative w-full h-36 overflow-hidden bg-slate-100">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtJCtXA0XLNwTIKlgOcuVBxg10xkbhBF1WMvkD-P3CUt7qL_yfdwYLrQgB8rL_MAx5LhRKUzW5fFM1AOxSs5YAkvOJv18m2CHfrp4oEaVtCRtwls6Kw-gKssdJROMndAFmajAlQoSVV4h7QeZOZ8agpLGpywZQebe65oGjZgKMvuyhL0wJN33L_JYt4R2sBKAv0Uhszj6378htyH20Fx1hJ2623Avfq7gtEKObQbUp"
+                alt="Map to Accurate Pathology Lab"
+                className="w-full h-full object-cover opacity-85"
+              />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md border border-slate-200 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#116e45] animate-ping" />
+                  <span className="text-[11px] font-bold text-[#0a1120]">Accurate Lab</span>
+                </div>
+              </div>
+            </div>
+            <div className="p-4 space-y-3">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#116e45] mt-0.5 shrink-0" />
+                <span className="text-[12px] text-slate-600 leading-relaxed">Lane no 15/A, Mohammad Wadi Road, Autadwadi Handewadi, Sayyad Nagar, Hadapsar, Pune 411028</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Clock className="w-4 h-4 text-[#116e45] shrink-0" />
+                <span className="text-[12px] font-semibold text-slate-900">Open 24 Hours <span className="font-normal text-slate-500">(24 × 7)</span></span>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Mohammad+Wadi+Road+Hadapsar+Pune+411028"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 rounded-xl bg-[#116e45] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-transform"
+              >
+                <Navigation className="w-3.5 h-3.5" />
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Open status badge */}
+          <div className="flex items-center justify-center">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-200 text-green-800 text-[11px] font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              Lab Open 24 Hours • Hadapsar
+            </span>
+          </div>
+        </div>
+
+        {/* ═══ DESKTOP/TABLET LAYOUT ═══ */}
+        <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 items-start">
           {/* Brand column */}
           <StaggerReveal className="lg:col-span-4 space-y-4">
             <motion.div variants={fadeUp} className="flex items-center gap-3">

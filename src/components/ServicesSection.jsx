@@ -6,21 +6,27 @@ const services = [
   {
     icon: Home,
     title: 'Home Sample Collection',
+    shortTitle: 'Home Collection',
     desc: 'Get your sample collected from the comfort of your home by verified, certified phlebotomists across Hadapsar.',
+    shortDesc: 'Certified phlebotomists at your doorstep across Hadapsar.',
     action: 'Book Home Visit',
     mode: 'home',
   },
   {
     icon: FlaskConical,
     title: 'Laboratory Testing',
+    shortTitle: 'Lab Testing',
     desc: 'Accurate, high-precision diagnostic testing utilizing automated multi-parameter clinical analyzers.',
+    shortDesc: 'High-precision automated diagnostic analyzers.',
     action: 'Book Lab Visit',
     mode: 'lab',
   },
   {
     icon: FileText,
     title: 'Reports on WhatsApp',
+    shortTitle: 'WhatsApp Reports',
     desc: 'Receive certified PDF test reports directly on WhatsApp with authenticated digital signatures and QR verification.',
+    shortDesc: 'Certified PDF reports sent directly to your WhatsApp.',
     action: 'Get Your Report',
     mode: 'whatsapp',
   },
@@ -28,23 +34,46 @@ const services = [
 
 export default function ServicesSection({ onBooking, onWhatsApp }) {
   return (
-    <section className="py-16 lg:py-20 bg-white/70 backdrop-blur-md border-y border-slate-200/60" id="services">
+    <section className="py-10 sm:py-16 lg:py-20 bg-white/70 backdrop-blur-md border-y border-slate-200/60" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <StaggerReveal className="text-center max-w-3xl mx-auto space-y-3 mb-14">
-          <motion.p variants={fadeUp} className="text-xs font-bold uppercase tracking-[0.2em] text-[#116e45]">
+        <StaggerReveal className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-14">
+          <motion.p variants={fadeUp} className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#116e45]">
             OUR SERVICES
           </motion.p>
-          <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold text-[#0a1120] tracking-[-0.02em]">
+          <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1120] tracking-[-0.02em]">
             Convenient, Reliable &amp; Patient-Focused
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <motion.p variants={fadeUp} className="text-slate-600 text-[13px] sm:text-sm lg:text-base leading-relaxed">
             Comprehensive diagnostic services designed for clinical accuracy and personal comfort.
           </motion.p>
         </StaggerReveal>
 
-        {/* Cards */}
-        <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" stagger={0.1}>
+        {/* Mobile Cards — compact list style */}
+        <div className="sm:hidden space-y-3">
+          {services.map((svc) => (
+            <motion.div
+              key={svc.title}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => svc.mode === 'whatsapp' ? onWhatsApp() : onBooking(svc.title, svc.mode)}
+              className="glass-card rounded-2xl p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-white/90 flex items-center gap-4 cursor-pointer active:bg-green-50/50 transition-colors"
+            >
+              <div className="w-11 h-11 rounded-xl bg-green-50 border border-green-100 text-[#116e45] flex items-center justify-center shrink-0">
+                <svc.icon className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-[14px] font-bold text-[#0a1120] tracking-tight">{svc.shortTitle}</h3>
+                <p className="text-[11px] text-slate-500 leading-snug mt-0.5 line-clamp-2">{svc.shortDesc}</p>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop Cards */}
+        <StaggerReveal className="hidden sm:grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" stagger={0.1}>
           {services.map((svc) => (
             <motion.div
               key={svc.title}
