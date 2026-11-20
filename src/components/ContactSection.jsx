@@ -96,7 +96,7 @@ export default function ContactSection() {
               <img
                 src="/images/logo.png"
                 alt="Accurate Pathology Laboratory"
-                className="h-10 w-auto object-contain"
+                className="h-11 sm:h-12 w-auto object-contain"
               />
             </motion.div>
             <motion.p variants={fadeUp} className="text-sm text-slate-600 leading-relaxed max-w-sm">

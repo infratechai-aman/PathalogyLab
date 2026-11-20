@@ -69,7 +69,7 @@ export default function Navbar({ onBooking }) {
             <img
               src="/images/logo.png"
               alt="Accurate Pathology Laboratory"
-              className="h-8 sm:h-10 w-auto object-contain group-hover:opacity-95 transition-opacity"
+              className="h-9 sm:h-11 lg:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
             />
           </a>
 
