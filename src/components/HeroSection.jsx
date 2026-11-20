@@ -126,8 +126,8 @@ export default function HeroSection({ onBooking }) {
           </>
         )}
 
-        <div className="max-w-[1480px] xl:max-w-[1600px] mx-auto px-6 lg:px-10 xl:px-14 relative py-6 lg:py-10 xl:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-[calc(100vh-100px)] max-h-[860px]">
+        <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-6 lg:px-10 xl:px-14 relative py-6 lg:py-10 xl:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-0 lg:min-h-[calc(100vh-100px)] lg:max-h-[860px]">
 
             {/* ── Left: Copy ── */}
             <div className="lg:col-span-5 xl:col-span-5 space-y-6 lg:space-y-7 text-left z-10">
@@ -147,7 +147,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0, y: enterY * 1.4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.06 }}
-                className="text-[2.5rem] lg:text-[3.25rem] xl:text-[3.6rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
+                className="text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] 2xl:text-[4.2rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
               >
                 Accurate Diagnostics,{' '}
                 <span className="block mt-1">
@@ -169,7 +169,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
-                className="text-[14.5px] lg:text-[15.5px] text-slate-500 max-w-md leading-[1.65] tracking-[-0.01em]"
+                className="text-[14.5px] lg:text-[15.5px] xl:text-base text-slate-500 max-w-md lg:max-w-lg leading-[1.65] tracking-[-0.01em]"
               >
                 Trusted pathology services with free home sample collection, 24/7 emergency availability, and fast reports delivered directly to WhatsApp.
               </motion.p>
@@ -233,9 +233,9 @@ export default function HeroSection({ onBooking }) {
                 <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
               )}
 
-              <div className="relative w-full max-w-[760px] 2xl:max-w-[820px]">
+              <div className="relative w-full max-w-[860px] xl:max-w-[940px] 2xl:max-w-[1020px]">
                 {/* Image frame — fluid height clamp so it never overflows laptop and expands on desktop */}
-                <div className="relative w-full h-[clamp(400px,56vh,620px)] rounded-[28px] lg:rounded-l-[220px] xl:rounded-l-[260px] lg:rounded-r-[32px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
+                <div className="relative w-full h-[clamp(420px,56vh,640px)] xl:h-[clamp(460px,58vh,680px)] rounded-[28px] lg:rounded-l-[220px] xl:rounded-l-[260px] lg:rounded-r-[32px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
                   <div className="relative w-full h-full rounded-[24px] lg:rounded-l-[212px] xl:rounded-l-[252px] lg:rounded-r-[26px] overflow-hidden bg-white shadow-inner">
                     <img
                       src="/images/hero-lab.jpg"

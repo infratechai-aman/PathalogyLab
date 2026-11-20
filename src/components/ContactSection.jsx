@@ -14,7 +14,7 @@ const quickLinks = [
 export default function ContactSection() {
   return (
     <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/80" id="contact">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
 
         {/* ═══ MOBILE LAYOUT ═══ */}
         <div className="sm:hidden space-y-5">

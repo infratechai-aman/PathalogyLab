@@ -5,7 +5,7 @@ import { RevealSection, ParallaxLayer } from '../animations';
 export default function CTABanner({ onBooking }) {
   return (
     <section className="py-8 sm:py-12 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         <RevealSection>
           <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#003b95] via-[#024ebb] to-[#002866] overflow-hidden shadow-2xl px-5 sm:px-12 py-8 sm:py-14 text-white">
             {/* Parallax glow blobs inside */}

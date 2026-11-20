@@ -35,7 +35,7 @@ const services = [
 export default function ServicesSection({ onBooking, onWhatsApp }) {
   return (
     <section className="py-10 sm:py-16 lg:py-20 bg-white/70 backdrop-blur-md" id="services">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         {/* Header */}
         <StaggerReveal className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-14">
           <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1120] tracking-[-0.02em]">

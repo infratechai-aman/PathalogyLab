@@ -35,7 +35,7 @@ export default function WhyUsSection({ onBooking }) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
           {/* Left content */}
           <StaggerReveal className="lg:col-span-5 space-y-4 sm:space-y-6" stagger={0.1}>

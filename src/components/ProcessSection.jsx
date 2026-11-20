@@ -11,8 +11,8 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-10 sm:py-16 lg:py-24 bg-white/60 backdrop-blur-md border-t border-slate-200/60" id="process">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-10 sm:py-16 lg:py-24 bg-white/60 backdrop-blur-md" id="process">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center mb-6 sm:mb-10">
           <RevealSection variants={slideRight} className="lg:col-span-4 space-y-2 sm:space-y-3">

@@ -84,7 +84,7 @@ export default function PackagesSection({ onBooking }) {
       {/* Ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-green-200/25 via-emerald-100/20 to-transparent rounded-full blur-[140px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         {/* Header — clean, authoritative, unslop */}
         <StaggerReveal className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 mb-6 sm:mb-10">
           <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-[#0a1120] tracking-[-0.03em]">

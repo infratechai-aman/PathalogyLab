@@ -58,7 +58,7 @@ export default function Navbar({ onBooking }) {
         }`}
       >
         {/* ── DESKTOP / TABLET BAR — Fluid wide fit ── */}
-        <div className="max-w-[1480px] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 h-16 sm:h-[70px] flex items-center justify-between gap-4">
+        <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 h-16 sm:h-[70px] flex items-center justify-between gap-4">
 
           {/* Logo — Actual Brand Logo */}
           <a
