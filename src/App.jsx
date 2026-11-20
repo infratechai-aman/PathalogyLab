@@ -13,10 +13,12 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppFAB from './components/WhatsAppFAB';
 import BookingModal from './components/BookingModal';
+import PolicyModal from './components/PolicyModal';
 import MobileBottomBar from './components/MobileBottomBar';
 
 export default function App() {
   const [modal, setModal] = useState({ open: false, preset: '', mode: 'lab' });
+  const [policyModal, setPolicyModal] = useState({ open: false, tab: 'privacy' });
 
   const openBooking = useCallback((preset = '', mode = 'lab') => {
     setModal({ open: true, preset, mode });
@@ -24,6 +26,14 @@ export default function App() {
 
   const closeBooking = useCallback(() => {
     setModal(m => ({ ...m, open: false }));
+  }, []);
+
+  const openPolicy = useCallback((tab = 'privacy') => {
+    setPolicyModal({ open: true, tab });
+  }, []);
+
+  const closePolicy = useCallback(() => {
+    setPolicyModal(p => ({ ...p, open: false }));
   }, []);
 
   const openWhatsApp = useCallback(() => {
@@ -44,10 +54,10 @@ export default function App() {
         <WhyUsSection onBooking={openBooking} />
         <CTABanner onBooking={openBooking} />
         <FAQSection />
-        <ContactSection />
+        <ContactSection onOpenPolicy={openPolicy} />
       </main>
 
-      <Footer />
+      <Footer onOpenPolicy={openPolicy} />
       <WhatsAppFAB />
       <MobileBottomBar onBooking={openBooking} isModalOpen={modal.open} />
 
@@ -56,6 +66,12 @@ export default function App() {
         onClose={closeBooking}
         preset={modal.preset}
         mode={modal.mode}
+      />
+
+      <PolicyModal
+        isOpen={policyModal.open}
+        onClose={closePolicy}
+        initialTab={policyModal.tab}
       />
     </div>
   );

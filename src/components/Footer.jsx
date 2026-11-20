@@ -1,12 +1,34 @@
-export default function Footer() {
+export default function Footer({ onOpenPolicy }) {
   return (
     <footer className="bg-white border-t border-slate-200/80 py-5 sm:py-6 pb-20 sm:pb-6 text-xs text-slate-500">
       <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
         <p className="text-center sm:text-left text-[11px] sm:text-xs">© 2026 Accurate Pathology Laboratory. All Rights Reserved. Hadapsar, Pune.</p>
         <div className="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs">
-          <a href="#hero" className="hover:text-slate-800 transition-colors">Privacy Policy</a>
+          <a
+            href="/privacy-policy.html"
+            onClick={(e) => {
+              if (onOpenPolicy) {
+                e.preventDefault();
+                onOpenPolicy('privacy');
+              }
+            }}
+            className="hover:text-[#003b95] transition-colors"
+          >
+            Privacy Policy
+          </a>
           <span>|</span>
-          <a href="#hero" className="hover:text-slate-800 transition-colors">Terms of Service</a>
+          <a
+            href="/terms-of-service.html"
+            onClick={(e) => {
+              if (onOpenPolicy) {
+                e.preventDefault();
+                onOpenPolicy('terms');
+              }
+            }}
+            className="hover:text-[#003b95] transition-colors"
+          >
+            Terms of Service
+          </a>
         </div>
       </div>
     </footer>

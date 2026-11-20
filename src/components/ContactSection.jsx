@@ -9,9 +9,11 @@ const quickLinks = [
   { label: 'Home Collection', href: '#process' },
   { label: 'About Us', href: '#why-us' },
   { label: 'Frequently Asked', href: '#faq' },
+  { label: 'Privacy Policy', href: '/privacy-policy.html', action: 'privacy' },
+  { label: 'Terms of Service', href: '/terms-of-service.html', action: 'terms' },
 ];
 
-export default function ContactSection() {
+export default function ContactSection({ onOpenPolicy }) {
   return (
     <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/80" id="contact">
       <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
@@ -45,18 +47,14 @@ export default function ContactSection() {
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.05 }}
             className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden"
           >
-            <div className="relative w-full h-36 overflow-hidden bg-slate-100">
-              <img
-                src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:blue%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
-                alt="Map to Accurate Pathology Lab Hadapsar"
-                className="w-full h-full object-cover opacity-85"
+            <div className="relative w-full h-44 overflow-hidden bg-slate-100">
+              <iframe
+                title="Accurate Pathology Laboratory Hadapsar"
+                src="https://maps.google.com/maps?q=Mohammad+Wadi+Road+Hadapsar+Pune+411028&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md border border-slate-200 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#003b95] animate-ping" />
-                  <span className="text-[11px] font-bold text-[#0a1120]">Accurate Lab</span>
-                </div>
-              </div>
             </div>
             <div className="p-4 space-y-3">
               <div className="flex items-start gap-2.5">
@@ -115,8 +113,19 @@ export default function ContactSection() {
             <motion.h4 variants={fadeUp} className="text-xs font-bold uppercase tracking-[0.15em] text-[#0a1120]">Quick Links</motion.h4>
             <ul className="space-y-2.5 text-xs font-medium text-slate-600">
               {quickLinks.map((l) => (
-                <motion.li key={l.href} variants={fadeUp}>
-                  <a href={l.href} className="hover:text-[#003b95] transition-colors">{l.label}</a>
+                <motion.li key={l.label} variants={fadeUp}>
+                  <a
+                    href={l.href}
+                    onClick={(e) => {
+                      if (l.action && onOpenPolicy) {
+                        e.preventDefault();
+                        onOpenPolicy(l.action);
+                      }
+                    }}
+                    className="hover:text-[#003b95] transition-colors"
+                  >
+                    {l.label}
+                  </a>
                 </motion.li>
               ))}
             </ul>
@@ -144,18 +153,14 @@ export default function ContactSection() {
           {/* Map card */}
           <RevealSection className="lg:col-span-3">
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-4 border border-slate-200/90 shadow-sm space-y-3">
-              <div className="relative w-full h-32 rounded-2xl bg-slate-100 overflow-hidden border border-slate-200">
-                <img
-                  src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:blue%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
-                  alt="Map to Accurate Lab Hadapsar"
-                  className="w-full h-full object-cover opacity-85"
+              <div className="relative w-full h-36 rounded-2xl bg-slate-100 overflow-hidden border border-slate-200">
+                <iframe
+                  title="Accurate Pathology Laboratory Location Hadapsar"
+                  src="https://maps.google.com/maps?q=Mohammad+Wadi+Road+Hadapsar+Pune+411028&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0 rounded-2xl"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md border border-slate-200 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#003b95] animate-ping" />
-                    <span className="text-xs font-bold text-[#0a1120]">Accurate Lab, Hadapsar</span>
-                  </div>
-                </div>
               </div>
               <motion.a
                 whileHover={{ scale: 1.02 }}
