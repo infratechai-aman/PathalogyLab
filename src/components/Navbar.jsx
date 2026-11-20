@@ -57,8 +57,8 @@ export default function Navbar({ onBooking }) {
             : 'bg-white/70 backdrop-blur-xl'
         }`}
       >
-        {/* ── DESKTOP / TABLET BAR ── */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[70px] flex items-center justify-between gap-4">
+        {/* ── DESKTOP / TABLET BAR — Fluid wide fit ── */}
+        <div className="max-w-[1480px] xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 h-16 sm:h-[70px] flex items-center justify-between gap-4">
 
           {/* Logo — Actual Brand Logo */}
           <a

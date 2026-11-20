@@ -126,11 +126,11 @@ export default function HeroSection({ onBooking }) {
           </>
         )}
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative pt-12 pb-14 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center min-h-[560px] lg:min-h-[620px]">
+        <div className="max-w-[1480px] xl:max-w-[1600px] mx-auto px-6 lg:px-10 xl:px-14 relative py-6 lg:py-10 xl:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-[calc(100vh-100px)] max-h-[860px]">
 
             {/* ── Left: Copy ── */}
-            <div className="lg:col-span-5 space-y-7 text-left z-10">
+            <div className="lg:col-span-5 xl:col-span-5 space-y-6 lg:space-y-7 text-left z-10">
               {/* Status badge */}
               <motion.div
                 initial={{ opacity: 0, y: enterY }}
@@ -147,7 +147,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0, y: enterY * 1.4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.06 }}
-                className="text-[2.75rem] lg:text-[3.5rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
+                className="text-[2.5rem] lg:text-[3.25rem] xl:text-[3.6rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
               >
                 Accurate Diagnostics,{' '}
                 <span className="block mt-1">
@@ -169,7 +169,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
-                className="text-[15px] lg:text-base text-slate-500 max-w-md leading-[1.65] tracking-[-0.01em]"
+                className="text-[14.5px] lg:text-[15.5px] text-slate-500 max-w-md leading-[1.65] tracking-[-0.01em]"
               >
                 Trusted pathology services with free home sample collection, 24/7 emergency availability, and fast reports delivered directly to WhatsApp.
               </motion.p>
@@ -207,7 +207,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
-                className="pt-6 border-t border-slate-100 flex items-center gap-7 text-slate-600"
+                className="pt-5 border-t border-slate-100 flex items-center gap-6 text-slate-600"
               >
                 {[
                   { icon: Clock, text: '24×7 Service' },
@@ -222,21 +222,21 @@ export default function HeroSection({ onBooking }) {
               </motion.div>
             </div>
 
-            {/* ── Right: Hero image — Expanded & Grand ── */}
+            {/* ── Right: Hero image — Fluid fit on all screens ── */}
             <motion.div
               initial={{ opacity: 0, x: reduceMotion ? 0 : 32, scale: enterScale }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.65, ease: EASE_OUT, delay: 0.08 }}
-              className="lg:col-span-7 relative flex justify-end items-center"
+              className="lg:col-span-7 xl:col-span-7 relative flex justify-end items-center w-full"
             >
               {!reduceMotion && (
-                <ParallaxLayer speed={0.08} className="absolute -right-20 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
               )}
 
-              <div className="relative w-full max-w-[760px] lg:w-[114%] lg:-mr-10 xl:-mr-14">
-                {/* Image frame — expansive and seamless */}
-                <div className="relative w-full h-[460px] lg:h-[580px] xl:h-[640px] rounded-[32px] lg:rounded-l-[280px] lg:rounded-r-[36px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_32px_80px_rgba(0,59,149,0.12)]">
-                  <div className="relative w-full h-full rounded-[26px] lg:rounded-l-[270px] lg:rounded-r-[28px] overflow-hidden bg-white shadow-inner">
+              <div className="relative w-full max-w-[760px] 2xl:max-w-[820px]">
+                {/* Image frame — fluid height clamp so it never overflows laptop and expands on desktop */}
+                <div className="relative w-full h-[clamp(400px,56vh,620px)] rounded-[28px] lg:rounded-l-[220px] xl:rounded-l-[260px] lg:rounded-r-[32px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
+                  <div className="relative w-full h-full rounded-[24px] lg:rounded-l-[212px] xl:rounded-l-[252px] lg:rounded-r-[26px] overflow-hidden bg-white shadow-inner">
                     <img
                       src="/images/hero-lab.jpg"
                       alt="Accurate Pathology — high-precision diagnostic laboratory in Hadapsar, Pune"
@@ -246,11 +246,11 @@ export default function HeroSection({ onBooking }) {
                     <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#003b95]/12 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/25 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Floating credential badge */}
+                    {/* Floating credential badge — bottom-left so it never overlaps WhatsApp FAB */}
                     <motion.div
                       animate={reduceMotion ? {} : { y: [0, -5, 0] }}
                       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white/95 backdrop-blur-2xl px-4 py-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-white/80 flex items-center gap-3.5"
+                      className="absolute bottom-5 left-5 lg:bottom-6 lg:left-8 bg-white/95 backdrop-blur-2xl px-4 py-3 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.12)] border border-white/80 flex items-center gap-3.5 z-10"
                     >
                       <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#003b95] flex items-center justify-center shadow-sm">
                         <ShieldCheck className="w-5 h-5" />
