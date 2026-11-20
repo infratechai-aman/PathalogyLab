@@ -139,7 +139,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                     >
                       {/* Modal header */}
                       <div className="flex items-center gap-3 mb-5 sm:mb-6">
-                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-green-50 border border-green-200/80 text-[#116e45] flex items-center justify-center shadow-sm">
+                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-50 border border-blue-200/80 text-[#003b95] flex items-center justify-center shadow-sm">
                           <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
                         </div>
                         <div>
@@ -158,7 +158,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                             value={form.name}
                             onChange={e => { setForm(f => ({ ...f, name: e.target.value })); setErrors(er => ({ ...er, name: '' })); }}
                             placeholder="Enter patient's full name"
-                            className={`w-full px-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all ${errors.name ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20'}`}
+                            className={`w-full px-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all ${errors.name ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20'}`}
                           />
                           {errors.name && <p className="mt-1 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.name}</p>}
                         </div>
@@ -176,7 +176,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                               value={form.phone}
                               onChange={e => { setForm(f => ({ ...f, phone: e.target.value.replace(/\D/g, '') })); setErrors(er => ({ ...er, phone: '' })); }}
                               placeholder="9876543210"
-                              className={`w-full pl-12 pr-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all ${errors.phone ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20'}`}
+                              className={`w-full pl-12 pr-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all ${errors.phone ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20'}`}
                             />
                           </div>
                           {errors.phone && <p className="mt-1 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.phone}</p>}
@@ -189,7 +189,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                             required
                             value={selectedTest}
                             onChange={e => setSelectedTest(e.target.value)}
-                            className="w-full px-3.5 py-3 sm:py-2.5 rounded-xl border border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20 text-[14px] sm:text-sm outline-none transition-all bg-white"
+                            className="w-full px-3.5 py-3 sm:py-2.5 rounded-xl border border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20 text-[14px] sm:text-sm outline-none transition-all bg-white"
                           >
                             {testOptions.map(o => (
                               <option key={o.value} value={o.value}>{o.label}</option>
@@ -206,7 +206,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                                 key={m}
                                 className={`flex items-center justify-center gap-2 p-3 sm:p-2.5 rounded-xl border cursor-pointer transition-all text-[13px] sm:text-xs font-semibold ${
                                   mode === m
-                                    ? 'bg-green-50 border-[#116e45] text-[#0a492e]'
+                                    ? 'bg-blue-50 border-[#003b95] text-[#003b95]'
                                     : 'border-slate-200 text-slate-700'
                                 }`}
                               >
@@ -241,7 +241,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                                 onChange={e => { setForm(f => ({ ...f, address: e.target.value })); setErrors(er => ({ ...er, address: '' })); }}
                                 rows={2}
                                 placeholder="Flat no, society name, Hadapsar / Mohammad Wadi..."
-                                className={`w-full px-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all resize-none ${errors.address ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20'}`}
+                                className={`w-full px-3.5 py-3 sm:py-2.5 rounded-xl border text-[14px] sm:text-sm outline-none transition-all resize-none ${errors.address ? 'border-red-400 bg-red-50 focus:border-red-500 focus:ring-2 focus:ring-red-200' : 'border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20'}`}
                               />
                               {errors.address && <p className="mt-1 text-[11px] text-red-500 flex items-center gap-1"><AlertCircle className="w-3 h-3" />{errors.address}</p>}
                             </motion.div>
@@ -258,7 +258,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                               value={form.date}
                               min={new Date().toISOString().split('T')[0]}
                               onChange={e => { setForm(f => ({ ...f, date: e.target.value })); setErrors(er => ({ ...er, date: '' })); }}
-                              className={`w-full px-3 py-3 sm:py-2 rounded-xl border text-[13px] sm:text-sm outline-none transition-all ${errors.date ? 'border-red-400 bg-red-50' : 'border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20'}`}
+                              className={`w-full px-3 py-3 sm:py-2 rounded-xl border text-[13px] sm:text-sm outline-none transition-all ${errors.date ? 'border-red-400 bg-red-50' : 'border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20'}`}
                             />
                             {errors.date && <p className="mt-1 text-[11px] text-red-500">{errors.date}</p>}
                           </div>
@@ -267,7 +267,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                             <select
                               value={form.time}
                               onChange={e => setForm(f => ({ ...f, time: e.target.value }))}
-                              className="w-full px-3 py-3 sm:py-2 rounded-xl border border-slate-200 focus:border-[#116e45] focus:ring-2 focus:ring-[#116e45]/20 text-[13px] sm:text-sm outline-none transition-all bg-white"
+                              className="w-full px-3 py-3 sm:py-2 rounded-xl border border-slate-200 focus:border-[#003b95] focus:ring-2 focus:ring-[#003b95]/20 text-[13px] sm:text-sm outline-none transition-all bg-white"
                             >
                               {timeSlots.map(t => <option key={t} value={t}>{t.split(' (')[0]}</option>)}
                             </select>
@@ -277,7 +277,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                         <motion.button
                           whileTap={{ scale: 0.98 }}
                           type="submit"
-                          className="w-full py-3.5 sm:py-3.5 mt-1 sm:mt-2 bg-gradient-to-r from-[#0d5f3a] to-[#116e45] text-white font-bold rounded-2xl shadow-lg shadow-green-900/15 transition-all duration-200 text-[13px] sm:text-xs tracking-wide"
+                          className="w-full py-3.5 sm:py-3.5 mt-1 sm:mt-2 bg-gradient-to-r from-[#003b95] to-[#024ebb] text-white font-bold rounded-2xl shadow-lg shadow-blue-900/15 transition-all duration-200 text-[13px] sm:text-xs tracking-wide"
                         >
                           Confirm & Schedule Test
                         </motion.button>
@@ -295,7 +295,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', duration: 0.5, bounce: 0.4, delay: 0.1 }}
-                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-50 text-[#116e45] mx-auto flex items-center justify-center border border-green-200"
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#003b95] mx-auto flex items-center justify-center border border-blue-200"
                       >
                         <CheckCircle className="w-7 h-7 sm:w-8 sm:h-8" />
                       </motion.div>
@@ -312,7 +312,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
                         ].map(({ label, value }) => (
                           <div key={label} className="flex justify-between">
                             <span className="text-slate-500">{label}:</span>
-                            <span className={`font-bold ${label === 'Mode' ? 'text-[#116e45]' : 'text-[#0a1120]'}`}>{value}</span>
+                            <span className={`font-bold ${label === 'Mode' ? 'text-[#003b95]' : 'text-[#0a1120]'}`}>{value}</span>
                           </div>
                         ))}
                       </div>

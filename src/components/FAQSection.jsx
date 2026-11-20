@@ -39,7 +39,7 @@ function FAQItem({ faq }) {
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25, ease: EASE_OUT }}
         >
-          <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#116e45] shrink-0" />
+          <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#003b95] shrink-0" />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -66,14 +66,11 @@ export default function FAQSection() {
     <section className="py-10 sm:py-16 lg:py-20 bg-white/70 backdrop-blur-md border-t border-slate-200/60" id="faq">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <StaggerReveal className="text-center space-y-2 sm:space-y-3 mb-8 sm:mb-12">
-          <motion.p variants={fadeUp} className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#116e45]">
-            FREQUENTLY ASKED QUESTIONS
-          </motion.p>
           <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl font-extrabold text-[#0a1120] tracking-tight">
-            Got Questions? We Have Answers.
+            Frequently Asked Questions
           </motion.h2>
           <motion.p variants={fadeUp} className="text-slate-600 text-[12px] sm:text-sm lg:text-base">
-            Everything about diagnostic tests & home collection in Hadapsar, Pune.
+            Everything you need to know about diagnostic tests and home sample collection in Hadapsar, Pune.
           </motion.p>
         </StaggerReveal>
 

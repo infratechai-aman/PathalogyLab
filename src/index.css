@@ -6,20 +6,22 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
-  /* Brand Palette — from logo: deep green + dark navy */
-  --brand-50:  #edf9f3;
-  --brand-100: #d7f2e4;
-  --brand-200: #b1e5cc;
-  --brand-300: #7dd2ae;
-  --brand-400: #46b88c;
-  --brand-500: #239c71;
-  --brand-600: #157e5b;
-  --brand-700: #116e45;
-  --brand-800: #0d5f3a;
-  --brand-900: #0a492e;
-  --brand-950: #052a1a;
+  /* Brand Palette — from actual logo: Royal Blue + Vibrant Accent Green */
+  --brand-50:  #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #93c5fd;
+  --brand-400: #3b82f6;
+  --brand-500: #024ebb;
+  --brand-600: #003b95;
+  --brand-700: #003380;
+  --brand-800: #002866;
+  --brand-900: #001f4d;
+  --brand-950: #001433;
+  --accent-green: #16a34a;
+  --accent-green-bright: #22c55e;
   --dark:      #0a1120;
-  --surface:   #fcfdfd;
+  --surface:   #f8fafc;
 }
 
 /* ─── Minimal scrollbar ─── */
@@ -38,12 +40,12 @@ body {
   color: #1e293b;
 }
 
-/* ─── Ambient mesh (subtle, branded) ─── */
+/* ─── Ambient mesh (subtle, branded Royal Blue & Green) ─── */
 .ambient-bg {
   background-image:
-    radial-gradient(at 0% 0%, rgba(17, 110, 69, 0.06) 0px, transparent 50%),
-    radial-gradient(at 100% 15%, rgba(10, 17, 32, 0.04) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(35, 156, 113, 0.05) 0px, transparent 55%);
+    radial-gradient(at 0% 0%, rgba(0, 59, 149, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 15%, rgba(22, 163, 74, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(2, 78, 187, 0.04) 0px, transparent 55%);
 }
 
 /* ─── Parallax sections ─── */
@@ -54,14 +56,14 @@ body {
 
 /* ─── Glass card — refined ─── */
 .glass-card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, 0.92);
 }
 
 /* ─── Selection ─── */
-::selection { background: #116e45; color: #fff; }
+::selection { background: #003b95; color: #fff; }
 
 /* ─── Keyframes (transform + opacity only — Emil Kowalski) ─── */
 @keyframes fadeUp {
@@ -85,8 +87,8 @@ body {
   50%       { transform: translateY(-8px); }
 }
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(17, 110, 69, 0.35); }
-  50%       { box-shadow: 0 0 0 10px rgba(17, 110, 69, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 59, 149, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(0, 59, 149, 0); }
 }
 @keyframes shimmer {
   0%   { background-position: -200% center; }

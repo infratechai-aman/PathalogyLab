@@ -27,7 +27,7 @@ export default function ContactSection() {
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200 shadow-sm active:scale-[0.98] transition-transform"
           >
-            <div className="w-11 h-11 rounded-xl bg-green-50 border border-green-100 text-[#116e45] flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 text-[#003b95] flex items-center justify-center shrink-0">
               <Phone className="w-5 h-5" />
             </div>
             <div className="flex-1">
@@ -47,31 +47,31 @@ export default function ContactSection() {
           >
             <div className="relative w-full h-36 overflow-hidden bg-slate-100">
               <img
-                src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:green%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
+                src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:blue%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
                 alt="Map to Accurate Pathology Lab Hadapsar"
                 className="w-full h-full object-cover opacity-85"
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md border border-slate-200 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#116e45] animate-ping" />
+                  <span className="w-2 h-2 rounded-full bg-[#003b95] animate-ping" />
                   <span className="text-[11px] font-bold text-[#0a1120]">Accurate Lab</span>
                 </div>
               </div>
             </div>
             <div className="p-4 space-y-3">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#116e45] mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#003b95] mt-0.5 shrink-0" />
                 <span className="text-[12px] text-slate-600 leading-relaxed">Lane no 15/A, Mohammad Wadi Road, Autadwadi Handewadi, Sayyad Nagar, Hadapsar, Pune 411028</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#116e45] shrink-0" />
+                <Clock className="w-4 h-4 text-[#003b95] shrink-0" />
                 <span className="text-[12px] font-semibold text-slate-900">Open 24 Hours <span className="font-normal text-slate-500">(24 × 7)</span></span>
               </div>
               <a
                 href="https://maps.google.com/?q=Mohammad+Wadi+Road+Hadapsar+Pune+411028"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-xl bg-[#116e45] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-transform"
+                className="w-full py-2.5 rounded-xl bg-[#003b95] text-white text-[12px] font-bold flex items-center justify-center gap-1.5 active:scale-[0.98] transition-transform"
               >
                 <Navigation className="w-3.5 h-3.5" />
                 <span>Get Directions</span>
@@ -81,7 +81,7 @@ export default function ContactSection() {
 
           {/* Open status badge */}
           <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-50 border border-green-200 text-green-800 text-[11px] font-semibold">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-[11px] font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               Lab Open 24 Hours • Hadapsar
             </span>
@@ -93,19 +93,17 @@ export default function ContactSection() {
           {/* Brand column */}
           <StaggerReveal className="lg:col-span-4 space-y-4">
             <motion.div variants={fadeUp} className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#116e45] text-white flex items-center justify-center font-bold shadow-md shadow-green-800/20">
-                <FlaskConical className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-xl tracking-tight text-[#0a1120] leading-none">ACCURATE</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#116e45] mt-0.5">Pathology Laboratory</span>
-              </div>
+              <img
+                src="/images/logo.png"
+                alt="Accurate Pathology Laboratory"
+                className="h-10 w-auto object-contain"
+              />
             </motion.div>
             <motion.p variants={fadeUp} className="text-sm text-slate-600 leading-relaxed max-w-sm">
               A trusted pathology laboratory in Hadapsar, Pune offering accurate, reliable and convenient diagnostic services with automated medical quality.
             </motion.p>
             <motion.div variants={fadeUp} className="pt-2 flex items-center gap-3 text-slate-500">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-green-50 border border-green-200 text-green-800 text-xs font-semibold">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-900 text-xs font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 Lab Open 24 Hours • Hadapsar
               </span>
@@ -118,7 +116,7 @@ export default function ContactSection() {
             <ul className="space-y-2.5 text-xs font-medium text-slate-600">
               {quickLinks.map((l) => (
                 <motion.li key={l.href} variants={fadeUp}>
-                  <a href={l.href} className="hover:text-[#116e45] transition-colors">{l.label}</a>
+                  <a href={l.href} className="hover:text-[#003b95] transition-colors">{l.label}</a>
                 </motion.li>
               ))}
             </ul>
@@ -129,15 +127,15 @@ export default function ContactSection() {
             <motion.h4 variants={fadeUp} className="text-xs font-bold uppercase tracking-[0.15em] text-[#0a1120]">Contact Us</motion.h4>
             <div className="space-y-3 text-xs text-slate-600">
               <motion.div variants={fadeUp} className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#116e45] mt-0.5 shrink-0" />
-                <a href="tel:+918840658081" className="font-semibold text-slate-900 hover:text-[#116e45] transition-colors">+91 88406 58081</a>
+                <Phone className="w-4 h-4 text-[#003b95] mt-0.5 shrink-0" />
+                <a href="tel:+918840658081" className="font-semibold text-slate-900 hover:text-[#003b95] transition-colors">+91 88406 58081</a>
               </motion.div>
               <motion.div variants={fadeUp} className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#116e45] mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#003b95] mt-0.5 shrink-0" />
                 <span className="leading-relaxed">Lane no 15/A, Mohammad Wadi Road, Autadwadi Handewadi, Sayyad Nagar, Hadapsar, Pune 411028</span>
               </motion.div>
               <motion.div variants={fadeUp} className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-[#116e45] shrink-0" />
+                <Clock className="w-4 h-4 text-[#003b95] shrink-0" />
                 <span className="font-semibold text-slate-900">Open 24 Hours <span className="font-normal text-slate-500">(24 × 7 Service)</span></span>
               </motion.div>
             </div>
@@ -148,13 +146,13 @@ export default function ContactSection() {
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-4 border border-slate-200/90 shadow-sm space-y-3">
               <div className="relative w-full h-32 rounded-2xl bg-slate-100 overflow-hidden border border-slate-200">
                 <img
-                  src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:green%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
+                  src="https://maps.googleapis.com/maps/api/staticmap?center=18.4715,73.9327&zoom=15&size=400x200&maptype=roadmap&markers=color:blue%7C18.4715,73.9327&key=&style=feature:all%7Csaturation:-80"
                   alt="Map to Accurate Lab Hadapsar"
                   className="w-full h-full object-cover opacity-85"
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md border border-slate-200 flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#116e45] animate-ping" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003b95] animate-ping" />
                     <span className="text-xs font-bold text-[#0a1120]">Accurate Lab, Hadapsar</span>
                   </div>
                 </div>

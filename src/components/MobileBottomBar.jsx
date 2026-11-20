@@ -38,7 +38,7 @@ export default function MobileBottomBar({ onBooking, isModalOpen }) {
               href="tel:+918840658081"
               className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl border border-slate-200 font-bold text-[12px] text-slate-800 active:scale-95 transition-transform"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#116e45]" />
+              <PhoneCall className="w-3.5 h-3.5 text-[#003b95]" />
               <span>Call</span>
             </a>
 
@@ -46,7 +46,7 @@ export default function MobileBottomBar({ onBooking, isModalOpen }) {
             <motion.button
               whileTap={{ scale: 0.96 }}
               onClick={() => onBooking('General Diagnostic Test', 'lab')}
-              className="flex-[2] flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-[#0d5f3a] to-[#116e45] text-white font-bold text-[12px] shadow-lg shadow-green-900/20"
+              className="flex-[2] flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-gradient-to-r from-[#003b95] to-[#024ebb] text-white font-bold text-[12px] shadow-lg shadow-blue-900/20"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Book a Test</span>

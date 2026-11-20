@@ -53,7 +53,7 @@ export default function HeroSection({ onBooking }) {
             Accurate Diagnostics,{' '}
             <span
               style={{
-                background: 'linear-gradient(135deg, #0a492e 0%, #116e45 50%, #239c71 100%)',
+                background: 'linear-gradient(135deg, #003b95 0%, #024ebb 50%, #16a34a 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -63,14 +63,14 @@ export default function HeroSection({ onBooking }) {
             </span>
           </motion.h1>
 
-          {/* Subtitle — one line of real value */}
+          {/* Subtitle — real value, no fake claims */}
           <motion.p
             initial={{ opacity: 0, y: enterY * 0.7 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.14 }}
             className="mt-3 text-[13px] text-slate-500 leading-[1.55] tracking-[-0.01em]"
           >
-            Home sample collection · 24/7 service · Reports on WhatsApp — trusted by 5,000+ Hadapsar families.
+            Free doorstep blood collection · 24/7 emergency service · Fast reports on WhatsApp across Hadapsar & Pune.
           </motion.p>
 
           {/* CTA Stack — large touch targets, 48px+ height */}
@@ -84,7 +84,7 @@ export default function HeroSection({ onBooking }) {
               whileTap={{ scale: 0.97 }}
               transition={EASE_SPRING}
               onClick={() => onBooking('General Test Booking')}
-              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[14px] bg-[#0a492e] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_4px_16px_rgba(10,73,46,0.25)] active:shadow-[0_2px_8px_rgba(10,73,46,0.2)] transition-shadow duration-150"
+              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[14px] bg-[#003b95] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_4px_16px_rgba(0,59,149,0.25)] active:shadow-[0_2px_8px_rgba(0,59,149,0.2)] transition-shadow duration-150"
             >
               <Calendar className="w-[18px] h-[18px]" />
               <span>Book a Test</span>
@@ -97,7 +97,7 @@ export default function HeroSection({ onBooking }) {
               onClick={() => onBooking('Home Sample Collection', 'home')}
               className="w-full flex items-center justify-center gap-2 h-[48px] rounded-[14px] bg-white text-[#0a1120] font-semibold text-[14px] border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] active:bg-slate-50 transition-colors duration-150"
             >
-              <Home className="w-4 h-4 text-[#116e45]" />
+              <Home className="w-4 h-4 text-[#003b95]" />
               <span>Home Collection</span>
             </motion.button>
           </motion.div>
@@ -115,8 +115,8 @@ export default function HeroSection({ onBooking }) {
               { icon: ShieldCheck, label: 'Reliable Results' },
             ].map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-1.5">
-                <div className="w-[26px] h-[26px] rounded-[8px] bg-[#edf9f3] flex items-center justify-center">
-                  <Icon className="w-[13px] h-[13px] text-[#116e45]" />
+                <div className="w-[26px] h-[26px] rounded-[8px] bg-blue-50 flex items-center justify-center">
+                  <Icon className="w-[13px] h-[13px] text-[#003b95]" />
                 </div>
                 <span className="text-[10px] font-semibold text-slate-600 tracking-tight">{label}</span>
               </div>
@@ -147,7 +147,7 @@ export default function HeroSection({ onBooking }) {
                 initial={{ opacity: 0, y: enterY }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, ease: EASE_OUT }}
-                className="inline-flex items-center gap-2 px-3.5 py-[7px] rounded-full bg-[#edf9f3] border border-[#b1e5cc]/60 text-[#0a492e] text-[11px] font-bold tracking-wide"
+                className="inline-flex items-center gap-2 px-3.5 py-[7px] rounded-full bg-blue-50/80 border border-blue-200/60 text-[#003b95] text-[11px] font-bold tracking-wide"
               >
                 <span className="w-[7px] h-[7px] rounded-full bg-emerald-500 animate-pulse" />
                 <span>Hadapsar, Pune • Open 24×7</span>
@@ -164,7 +164,7 @@ export default function HeroSection({ onBooking }) {
                 <span className="block mt-1">
                   <span
                     style={{
-                      background: 'linear-gradient(135deg, #0a492e 0%, #116e45 40%, #239c71 100%)',
+                      background: 'linear-gradient(135deg, #003b95 0%, #024ebb 45%, #16a34a 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
@@ -182,7 +182,7 @@ export default function HeroSection({ onBooking }) {
                 transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
                 className="text-[15px] lg:text-base text-slate-500 max-w-md leading-[1.65] tracking-[-0.01em]"
               >
-                Trusted pathology services with home sample collection, 24/7 availability, and reports delivered straight to your WhatsApp.
+                Trusted pathology services with free home sample collection, 24/7 emergency availability, and fast reports delivered directly to WhatsApp.
               </motion.p>
 
               {/* CTAs */}
@@ -196,7 +196,7 @@ export default function HeroSection({ onBooking }) {
                   whileTap={{ scale: 0.97 }}
                   transition={EASE_SPRING}
                   onClick={() => onBooking('General Test Booking')}
-                  className="flex items-center gap-2.5 px-7 py-3.5 rounded-[14px] bg-[#0a492e] text-white font-bold text-sm tracking-[-0.01em] shadow-[0_4px_16px_rgba(10,73,46,0.2)] hover:shadow-[0_8px_24px_rgba(10,73,46,0.25)] transition-shadow duration-200"
+                  className="flex items-center gap-2.5 px-7 py-3.5 rounded-[14px] bg-[#003b95] hover:bg-[#002f78] text-white font-bold text-sm tracking-[-0.01em] shadow-[0_4px_16px_rgba(0,59,149,0.25)] hover:shadow-[0_8px_24px_rgba(0,59,149,0.3)] transition-all duration-200"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Book a Test</span>
@@ -206,9 +206,9 @@ export default function HeroSection({ onBooking }) {
                   whileTap={{ scale: 0.97 }}
                   transition={EASE_SPRING}
                   onClick={() => onBooking('Home Sample Collection', 'home')}
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-white text-[#0a1120] font-semibold text-sm border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] hover:border-[#b1e5cc] hover:bg-[#fcfefd] transition-all duration-200"
+                  className="flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-white text-[#0a1120] font-semibold text-sm border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-200"
                 >
-                  <Home className="w-4 h-4 text-[#116e45]" />
+                  <Home className="w-4 h-4 text-[#003b95]" />
                   <span>Home Collection</span>
                 </motion.button>
               </motion.div>
@@ -226,7 +226,7 @@ export default function HeroSection({ onBooking }) {
                   { icon: ShieldCheck, text: 'Reliable & Accurate' },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-center gap-2 text-xs font-semibold tracking-tight">
-                    <Icon className="w-3.5 h-3.5 text-[#116e45]" />
+                    <Icon className="w-3.5 h-3.5 text-[#003b95]" />
                     <span>{text}</span>
                   </div>
                 ))}
@@ -241,12 +241,12 @@ export default function HeroSection({ onBooking }) {
               className="lg:col-span-7 relative flex justify-end items-center"
             >
               {!reduceMotion && (
-                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-gradient-to-br from-[#edf9f3]/60 via-[#d7f2e4]/40 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
               )}
 
               <div className="relative w-full max-w-[640px]">
                 {/* Image frame with organic shape */}
-                <div className="relative w-full h-[400px] lg:h-[520px] rounded-[24px] lg:rounded-l-[240px] lg:rounded-r-[24px] overflow-hidden bg-gradient-to-tr from-[#edf9f3] via-white to-[#d7f2e4]/40 p-[6px] lg:p-2 border border-[#b1e5cc]/40 shadow-[0_24px_64px_rgba(10,73,46,0.08)]">
+                <div className="relative w-full h-[400px] lg:h-[520px] rounded-[24px] lg:rounded-l-[240px] lg:rounded-r-[24px] overflow-hidden bg-gradient-to-tr from-blue-50 via-white to-emerald-50/40 p-[6px] lg:p-2 border border-blue-200/40 shadow-[0_24px_64px_rgba(0,59,149,0.08)]">
                   <div className="relative w-full h-full rounded-[20px] lg:rounded-l-[232px] lg:rounded-r-[20px] overflow-hidden bg-white shadow-inner">
                     <img
                       src="/images/hero-lab.jpg"
@@ -254,7 +254,7 @@ export default function HeroSection({ onBooking }) {
                       className="w-full h-full object-cover object-center"
                     />
                     {/* Cinematic overlays */}
-                    <div className="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#0a492e]/12 via-[#116e45]/4 to-transparent pointer-events-none hidden lg:block" />
+                    <div className="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#003b95]/10 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/20 via-transparent to-transparent pointer-events-none" />
 
                     {/* Floating credential badge */}
@@ -263,7 +263,7 @@ export default function HeroSection({ onBooking }) {
                       transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                       className="absolute bottom-5 right-5 bg-white/92 backdrop-blur-xl px-4 py-2.5 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.1)] border border-white/70 flex items-center gap-3"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-[#edf9f3] text-[#116e45] flex items-center justify-center">
+                      <div className="w-9 h-9 rounded-xl bg-blue-50 text-[#003b95] flex items-center justify-center">
                         <ShieldCheck className="w-4 h-4" />
                       </div>
                       <div>

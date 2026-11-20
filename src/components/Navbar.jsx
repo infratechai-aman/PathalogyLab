@@ -60,19 +60,17 @@ export default function Navbar({ onBooking }) {
         {/* ── DESKTOP / TABLET BAR ── */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-[70px] flex items-center justify-between gap-4">
 
-          {/* Logo — compact single line */}
+          {/* Logo — Actual Brand Logo */}
           <a
             href="#hero"
             onClick={() => handleNav('#hero')}
-            className="flex items-center gap-2.5 shrink-0 group"
+            className="flex items-center gap-2 shrink-0 group py-1"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#116e45] to-[#0a1120] flex items-center justify-center text-white shadow-md shadow-green-800/20 group-hover:scale-105 transition-transform duration-200">
-              <FlaskConical className="w-5 h-5" />
-            </div>
-            <div className="leading-tight">
-              <span className="block font-extrabold text-[15px] tracking-tight text-[#0a1120]">ACCURATE</span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[#116e45]">Pathology Lab</span>
-            </div>
+            <img
+              src="/images/logo.png"
+              alt="Accurate Pathology Laboratory"
+              className="h-8 sm:h-10 w-auto object-contain group-hover:opacity-95 transition-opacity"
+            />
           </a>
 
           {/* Desktop nav pill — only shown ≥ lg */}
@@ -84,7 +82,7 @@ export default function Navbar({ onBooking }) {
                 onClick={() => handleNav(link.href)}
                 className={`px-3.5 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-all duration-200 ${
                   active === link.href
-                    ? 'bg-white text-[#116e45] shadow-sm'
+                    ? 'bg-white text-[#003b95] shadow-sm font-bold'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/70'
                 }`}
               >
@@ -97,9 +95,9 @@ export default function Navbar({ onBooking }) {
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <a
               href="tel:+918840658081"
-              className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 hover:text-[#116e45] transition-colors whitespace-nowrap"
+              className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 hover:text-[#003b95] transition-colors whitespace-nowrap"
             >
-              <div className="w-6 h-6 rounded-full bg-green-50 border border-green-200/70 flex items-center justify-center text-[#116e45]">
+              <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-200/70 flex items-center justify-center text-[#003b95]">
                 <PhoneCall className="w-3 h-3" />
               </div>
               <span>88406 58081</span>
@@ -109,7 +107,7 @@ export default function Navbar({ onBooking }) {
               whileTap={{ scale: 0.97 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               onClick={() => onBooking('General Diagnostic Test')}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#0d5f3a] to-[#116e45] text-white font-bold text-[11px] tracking-wide shadow-md shadow-green-900/15 hover:shadow-green-800/25 transition-shadow duration-200 whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#003b95] to-[#024ebb] text-white font-bold text-[11px] tracking-wide shadow-md shadow-blue-900/15 hover:shadow-blue-800/25 transition-shadow duration-200 whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5" />
               Book a Test
@@ -121,7 +119,7 @@ export default function Navbar({ onBooking }) {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => onBooking('General Diagnostic Test')}
-              className="px-3.5 py-2 rounded-full bg-[#0d5f3a] text-white font-bold text-[11px] shadow-md"
+              className="px-3.5 py-2 rounded-full bg-[#003b95] text-white font-bold text-[11px] shadow-md"
             >
               Book Test
             </motion.button>
@@ -175,7 +173,7 @@ export default function Navbar({ onBooking }) {
                     onClick={() => handleNav(link.href)}
                     className={`flex items-center gap-2 px-3.5 py-3 rounded-xl text-sm font-medium transition-colors ${
                       active === link.href
-                        ? 'font-semibold text-[#116e45] bg-green-50'
+                        ? 'font-semibold text-[#003b95] bg-blue-50'
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
@@ -188,12 +186,12 @@ export default function Navbar({ onBooking }) {
                     href="tel:+918840658081"
                     className="flex items-center justify-center gap-2 py-3 rounded-xl border border-slate-200 font-semibold text-sm text-slate-900"
                   >
-                    <PhoneCall className="w-4 h-4 text-[#116e45]" />
+                    <PhoneCall className="w-4 h-4 text-[#003b95]" />
                     <span>Call Now</span>
                   </a>
                   <button
                     onClick={() => { setMobileOpen(false); onBooking('Mobile Menu Booking'); }}
-                    className="w-full py-3 bg-[#0d5f3a] text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md"
+                    className="w-full py-3 bg-[#003b95] text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md"
                   >
                     <Calendar className="w-4 h-4" />
                     Book Test

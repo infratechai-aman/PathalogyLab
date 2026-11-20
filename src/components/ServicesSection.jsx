@@ -38,14 +38,11 @@ export default function ServicesSection({ onBooking, onWhatsApp }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <StaggerReveal className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3 mb-8 sm:mb-14">
-          <motion.p variants={fadeUp} className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#116e45]">
-            OUR SERVICES
-          </motion.p>
           <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0a1120] tracking-[-0.02em]">
-            Convenient, Reliable &amp; Patient-Focused
+            Diagnostic Services Designed for Your Comfort
           </motion.h2>
           <motion.p variants={fadeUp} className="text-slate-600 text-[13px] sm:text-sm lg:text-base leading-relaxed">
-            Comprehensive diagnostic services designed for clinical accuracy and personal comfort.
+            Convenient, reliable, and patient-focused diagnostic care across Hadapsar, Pune.
           </motion.p>
         </StaggerReveal>
 
@@ -56,9 +53,9 @@ export default function ServicesSection({ onBooking, onWhatsApp }) {
               key={svc.title}
               whileTap={{ scale: 0.98 }}
               onClick={() => svc.mode === 'whatsapp' ? onWhatsApp() : onBooking(svc.title, svc.mode)}
-              className="glass-card rounded-2xl p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-white/90 flex items-center gap-4 cursor-pointer active:bg-green-50/50 transition-colors"
+              className="glass-card rounded-2xl p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-white/90 flex items-center gap-4 cursor-pointer active:bg-blue-50/50 transition-colors"
             >
-              <div className="w-11 h-11 rounded-xl bg-green-50 border border-green-100 text-[#116e45] flex items-center justify-center shrink-0">
+              <div className="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 text-[#003b95] flex items-center justify-center shrink-0">
                 <svc.icon className="w-5 h-5" />
               </div>
               <div className="flex-1 min-w-0">
@@ -78,25 +75,25 @@ export default function ServicesSection({ onBooking, onWhatsApp }) {
             <motion.div
               key={svc.title}
               variants={scaleIn}
-              whileHover={{ y: -8, boxShadow: '0 20px 48px -8px rgba(17,110,69,0.14), 0 8px 16px -4px rgba(0,0,0,0.05)' }}
+              whileHover={{ y: -8, boxShadow: '0 20px 48px -8px rgba(0,59,149,0.14), 0 8px 16px -4px rgba(0,0,0,0.05)' }}
               transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
               onClick={() => svc.mode === 'whatsapp' ? onWhatsApp() : onBooking(svc.title, svc.mode)}
-              className="glass-card relative rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-white/90 flex flex-col justify-between group cursor-pointer hover:border-green-200/80 transition-colors duration-300"
+              className="glass-card relative rounded-3xl p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-white/90 flex flex-col justify-between group cursor-pointer hover:border-blue-200/80 transition-colors duration-300"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-green-50 border border-green-100 text-[#116e45] flex items-center justify-center group-hover:bg-[#116e45] group-hover:text-white transition-all duration-300 shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 text-[#003b95] flex items-center justify-center group-hover:bg-[#003b95] group-hover:text-white transition-all duration-300 shadow-sm">
                   <svc.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0a1120] tracking-tight group-hover:text-[#116e45] transition-colors">
+                <h3 className="text-xl font-bold text-[#0a1120] tracking-tight group-hover:text-[#003b95] transition-colors">
                   {svc.title}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{svc.desc}</p>
               </div>
               <div className="pt-6 mt-6 flex justify-between items-center border-t border-slate-100">
-                <span className="text-xs font-semibold text-[#116e45] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <span className="text-xs font-semibold text-[#003b95] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   {svc.action}
                 </span>
-                <span className="w-9 h-9 rounded-full bg-slate-100/90 text-slate-700 flex items-center justify-center group-hover:bg-[#116e45] group-hover:text-white transition-all duration-300">
+                <span className="w-9 h-9 rounded-full bg-slate-100/90 text-slate-700 flex items-center justify-center group-hover:bg-[#003b95] group-hover:text-white transition-all duration-300">
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
