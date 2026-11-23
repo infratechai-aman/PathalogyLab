@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ─── Design tokens ─── */
+/* Design tokens used by the package & tests pages */
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --color-brand: #003b95;
@@ -14,26 +14,173 @@
   --color-wa: #0e7a40;        /* WhatsApp green darkened: 5.4:1 with white text (AA) */
 }
 
+/* ─── Easing presets (Emil Kowalski: strong curves, not CSS built-ins) ─── */
 :root {
-  /* Emil Kowalski curves — never the CSS built-ins */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Brand Palette — from actual logo: Royal Blue + Vibrant Accent Green */
+  --brand-50:  #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #93c5fd;
+  --brand-400: #3b82f6;
+  --brand-500: #024ebb;
+  --brand-600: #003b95;
+  --brand-700: #003380;
+  --brand-800: #002866;
+  --brand-900: #001f4d;
+  --brand-950: #001433;
+  --accent-green: #16a34a;
+  --accent-green-bright: #22c55e;
+  --dark:      #0a1120;
+  --surface:   #f8fafc;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+/* ─── Minimal scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-sans);
+  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f7f9fc;
+  background-color: var(--surface);
   color: #1e293b;
-  text-rendering: optimizeLegibility;
 }
 
+/* ─── Ambient mesh (subtle, branded Royal Blue & Green) ─── */
+.ambient-bg {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(0, 59, 149, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 15%, rgba(22, 163, 74, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(2, 78, 187, 0.04) 0px, transparent 55%);
+}
+
+/* ─── Parallax sections ─── */
+.parallax-hero {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* ─── Glass card — refined ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+}
+
+/* ─── Selection ─── */
 ::selection { background: #003b95; color: #fff; }
 
+/* ─── Keyframes (transform + opacity only — Emil Kowalski) ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 59, 149, 0.35); }
+  50%       { box-shadow: 0 0 0 10px rgba(0, 59, 149, 0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+.animate-marquee { animation: marquee 28s linear infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Reduced motion — fewer/gentler, not zero (Emil + Apple) ─── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-marquee,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Hover gating — touch fires false hovers (Emil) ─── */
+@media (hover: none), (pointer: coarse) {
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ─── Scroll progress bar ─── */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #003b95, #024ebb, #16a34a);
+  z-index: 9999;
+  transition: width 100ms linear;
+}
+
+/* ─── Counter ─── */
+.counter-animate {
+  animation: fadeUp 0.6s var(--ease-out) both;
+}
+
+/* ─── Safe area inset (iPhone / Android nav) ─── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Mobile scroll containers ─── */
+.mobile-cards-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-cards-scroll::-webkit-scrollbar { display: none; }
+
+/* ─── Hover lift (desktop only) ─── */
+.hover-lift {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px -8px rgba(10, 73, 46, 0.12), 0 8px 16px -4px rgba(0,0,0,0.04);
+}
+
+
+/* ════ Helpers for package pages, tests page, FAQ accordion ════ */
 /* ─── Focus rings: visible for keyboard, hidden for mouse ─── */
 :focus { outline: none; }
 :focus-visible {
@@ -107,15 +254,7 @@ body {
   border-radius: 12px;
 }
 
-/* ─── Legacy helpers still used by kept components ─── */
-.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
-#scroll-progress-bar {
-  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
-  width: 100%; transform-origin: 0 50%;
-  background: linear-gradient(90deg, #003b95, #024ebb, #16a34a);
-}
 
-/* ─── Reduced motion: fade only, no movement ─── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { transform: none; transition: opacity 200ms ease; }

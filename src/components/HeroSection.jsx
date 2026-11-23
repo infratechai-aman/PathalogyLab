@@ -1,94 +1,268 @@
-import { Clock, FileText, Home, ShieldCheck, ArrowRight } from 'lucide-react';
-import { LAB, getPackage, formatPrice } from '../data/lab';
-import { Container, PrimaryButton, WhatsAppButton } from './ui';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Calendar, Home, Clock, MessageCircle, ShieldCheck, ArrowRight, Microscope } from 'lucide-react';
+import { EASE_OUT, EASE_SPRING, ParallaxLayer } from '../animations';
 
-const fullBody = getPackage('full-body-profile');
-
-/* Mobile-first hero. The H1 paints from the prerendered HTML with no JS-driven
-   opacity, so it can be the LCP element without waiting for hydration. */
+/* ── Hero Section — premium, unslop, Apple-design principles ── */
 export default function HeroSection({ onBooking }) {
+  const reduceMotion = useReducedMotion();
+  const enterY = reduceMotion ? 0 : 18;
+  const enterScale = reduceMotion ? 1 : 0.97;
+
   return (
-    <section id="hero" aria-labelledby="hero-title" className="relative overflow-hidden bg-gradient-to-b from-white to-[#f2f6fc]">
-      <Container className="grid items-center gap-8 pt-6 pb-10 sm:pt-12 sm:pb-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pt-16 lg:pb-20">
-        <div>
-          <p className="enter inline-flex items-center gap-2 rounded-full border border-mint-500/25 bg-mint-50 px-3 py-1.5 text-[12px] font-semibold text-mint">
-            <span className="h-2 w-2 rounded-full bg-mint-500" aria-hidden="true" />
-            Open 24×7 · Mohammad Wadi Road, Sayyad Nagar
-          </p>
+    <section className="relative overflow-hidden" id="hero">
 
-          <h1 id="hero-title" className="mt-4 text-[2.15rem] leading-[1.08] sm:text-5xl lg:text-[3.4rem] font-extrabold tracking-[-0.035em] text-ink text-balance">
-            Pathology Lab &amp; Blood Test at Home in <span className="text-brand">Mohammadwadi, Pune</span>
-          </h1>
-
-          <p className="enter mt-3 text-[13px] font-bold uppercase tracking-[0.14em] text-mint" style={{ '--i': 1 }}>
-            {LAB.taglines[0]}
-          </p>
-
-          <p className="enter mt-3 max-w-xl text-[15.5px] sm:text-lg leading-relaxed text-slate-600" style={{ '--i': 2 }}>
-            Your neighbourhood lab in Sayyad Nagar, Hadapsar. Health checkup packages from ₹299, a full body checkup with 85 tests and a monsoon fever panel, with
-            sample collection at your doorstep and reports on WhatsApp. {LAB.allTestsLine}.
-          </p>
-
-          <div className="enter mt-6 grid gap-2.5 sm:flex sm:flex-wrap" style={{ '--i': 3 }}>
-            <PrimaryButton size="md" onClick={() => onBooking('Home Sample Collection', 'home')} className="w-full sm:w-auto">
-              <Home className="h-[18px] w-[18px]" aria-hidden="true" />
-              Book Home Collection
-            </PrimaryButton>
-            <WhatsAppButton
-              size="md"
-              label="WhatsApp Us"
-              message="Hello Accurate Pathology, I want to book a blood test at home."
-              className="w-full sm:w-auto"
-            />
-          </div>
-
-          <ul className="enter mt-6 grid grid-cols-3 gap-2 text-[12.5px] font-semibold text-slate-700 sm:max-w-md" style={{ '--i': 4 }}>
-            {[
-              { icon: Clock, label: 'Open 24×7' },
-              { icon: FileText, label: 'Reports on WhatsApp' },
-              { icon: ShieldCheck, label: 'Hygienic collection' },
-            ].map(({ icon: Icon, label }) => (
-              <li key={label} className="flex flex-col items-center gap-1.5 rounded-2xl border border-slate-200 bg-white px-2 py-3 text-center">
-                <Icon className="h-[18px] w-[18px] text-brand" aria-hidden="true" />
-                <span className="leading-tight">{label}</span>
-              </li>
-            ))}
-          </ul>
+      {/* ════════════════════════════════════════════════════════
+          MOBILE HERO (< sm) — Full-screen immersive lab experience
+          ════════════════════════════════════════════════════════ */}
+      <div className="sm:hidden relative min-h-[calc(100svh-64px)] flex flex-col justify-end overflow-hidden pb-6 pt-16">
+        {/* Full-screen hero image backdrop */}
+        <div className="absolute inset-0 z-0">
+          <motion.img
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.2, ease: EASE_OUT }}
+            src="/images/hero-lab-960.webp"
+            srcSet="/images/hero-lab-640.webp 640w, /images/hero-lab-960.webp 960w, /images/hero-lab.webp 1376w"
+            sizes="(min-width: 640px) 50vw, 100vw"
+            width="1376"
+            height="768"
+            fetchPriority="high"
+            alt="Accurate Pathology Laboratory — modern diagnostic center in Hadapsar, Pune"
+            className="w-full h-full object-cover object-[center_20%]"
+          />
+          {/* Seamless cinematic multi-tier gradients */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120] via-[#0a1120]/80 via-45% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent" />
         </div>
 
-        {/* Photo: a contained card on mobile instead of a dark full-bleed backdrop */}
-        <div className="relative">
-          <div className="overflow-hidden rounded-[28px] border border-white bg-slate-100 shadow-[0_24px_60px_-24px_rgba(0,59,149,0.35)] ring-1 ring-slate-200">
-            <img
-              src="/images/hero-lab-960.webp"
-              srcSet="/images/hero-lab-640.webp 640w, /images/hero-lab-960.webp 960w, /images/hero-lab.webp 1376w"
-              sizes="(min-width: 1024px) 560px, calc(100vw - 32px)"
-              width="1376"
-              height="768"
-              fetchPriority="high"
-              alt="Lab technician at Accurate Pathology Laboratory, Hadapsar, holding blood sample tubes"
-              className="aspect-[4/3] w-full object-cover object-[45%_30%] lg:aspect-[5/4]"
-            />
-          </div>
-
-          <a
-            href={`/packages/${fullBody.slug}`}
-            className="press absolute -bottom-4 left-4 right-4 flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white/95 px-4 py-3 shadow-[0_12px_32px_-12px_rgba(15,23,42,0.3)] backdrop-blur sm:left-auto sm:right-6 sm:w-80"
+        {/* Content — docked over the cinematic gradient backdrop */}
+        <div className="px-5 relative z-10 space-y-4">
+          {/* Headline — high contrast & impactful */}
+          <motion.p
+            initial={{ y: enterY }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.08 }}
+            className="text-[2rem] font-extrabold text-white tracking-[-0.035em] leading-[1.12]"
           >
-            <span className="min-w-0">
-              <span className="block text-[12px] font-bold uppercase tracking-[0.1em] text-mint">Special offer</span>
-              <span className="block truncate text-[15px] font-bold text-ink">Full Body · {fullBody.parameters} tests</span>
+            Accurate Diagnostics,{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #60a5fa 0%, #38bdf8 45%, #4ade80 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Healthier You.
             </span>
-            <span className="flex shrink-0 items-center gap-2">
-              <span className="text-right leading-tight">
-                <span className="block text-lg font-extrabold text-ink">{formatPrice(fullBody.price)}</span>
-                <span className="block text-[12px] text-slate-500 line-through">{formatPrice(fullBody.mrp)}</span>
-              </span>
-              <ArrowRight className="h-4 w-4 text-brand" aria-hidden="true" />
-            </span>
-          </a>
+          </motion.p>
+
+          {/* Subtitle — real value, no fake claims */}
+          <motion.p
+            initial={{ y: enterY * 0.7 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.14 }}
+            className="text-[13px] text-slate-200/90 leading-[1.55] tracking-[-0.01em] font-medium"
+          >
+            Free doorstep blood collection · 24/7 emergency service · Fast reports on WhatsApp across Hadapsar & Pune.
+          </motion.p>
+
+          {/* CTA Stack — large touch targets, 48px+ height */}
+          <motion.div
+            initial={{ opacity: 0, y: enterY * 0.6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.2 }}
+            className="space-y-2.5 pt-1"
+          >
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              transition={EASE_SPRING}
+              onClick={() => onBooking('General Test Booking')}
+              className="w-full flex items-center justify-center gap-2.5 h-[52px] rounded-[16px] bg-gradient-to-r from-[#003b95] to-[#0256cc] text-white font-bold text-[15px] tracking-[-0.01em] shadow-[0_8px_24px_rgba(2,86,204,0.35)] active:scale-[0.98] transition-transform"
+            >
+              <Calendar className="w-[18px] h-[18px]" />
+              <span>Book a Test</span>
+              <ArrowRight className="w-4 h-4 opacity-70" />
+            </motion.button>
+
+            <motion.button
+              whileTap={{ scale: 0.97 }}
+              transition={EASE_SPRING}
+              onClick={() => onBooking('Home Sample Collection', 'home')}
+              className="w-full flex items-center justify-center gap-2 h-[48px] rounded-[16px] bg-white/12 backdrop-blur-xl text-white font-semibold text-[14px] border border-white/20 shadow-[0_4px_16px_rgba(0,0,0,0.15)] active:bg-white/20 transition-colors"
+            >
+              <Home className="w-4 h-4 text-emerald-400" />
+              <span>Home Collection</span>
+            </motion.button>
+          </motion.div>
+
+          {/* Trust strip — compact, evenly spaced */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.35 }}
+            className="pt-3 border-t border-white/10 flex items-center justify-between text-slate-300"
+          >
+            {[
+              { icon: Clock, label: '24×7 Service' },
+              { icon: MessageCircle, label: 'WhatsApp Reports' },
+              { icon: ShieldCheck, label: 'Reliable Results' },
+            ].map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <div className="w-[24px] h-[24px] rounded-full bg-white/10 flex items-center justify-center">
+                  <Icon className="w-3 h-3 text-emerald-400" />
+                </div>
+                <span className="text-[10.5px] font-semibold text-slate-200 tracking-tight">{label}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
-      </Container>
+      </div>
+
+      {/* ════════════════════════════════════════════════════════
+          DESKTOP / TABLET HERO (≥ sm) — Premium layout
+          ════════════════════════════════════════════════════════ */}
+      <div className="hidden sm:block">
+        {/* Soft ambient blobs — hidden on reduced-motion */}
+        {!reduceMotion && (
+          <>
+            <ParallaxLayer speed={0.12} className="absolute top-10 left-[20%] w-[540px] h-[540px] bg-blue-100/35 rounded-full blur-[140px] pointer-events-none -z-10" />
+            <ParallaxLayer speed={0.06} className="absolute -right-24 bottom-0 w-[440px] h-[440px] bg-emerald-100/30 rounded-full blur-[120px] pointer-events-none -z-10" />
+          </>
+        )}
+
+        <div className="max-w-[1480px] xl:max-w-[1600px] 2xl:max-w-[1720px] mx-auto px-6 lg:px-10 xl:px-14 relative py-5 lg:py-8 xl:py-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center min-h-0 lg:min-h-[calc(100vh-140px)] lg:max-h-[760px]">
+
+            {/* ── Left: Copy ── */}
+            <div className="lg:col-span-5 xl:col-span-5 space-y-6 lg:space-y-7 text-left z-10">
+              {/* Status badge */}
+              <motion.div
+                initial={{ opacity: 0, y: enterY }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: EASE_OUT }}
+                className="inline-flex items-center gap-2 px-3.5 py-[7px] rounded-full bg-blue-50/80 border border-blue-200/60 text-[#003b95] text-[11px] font-bold tracking-wide"
+              >
+                <span className="w-[7px] h-[7px] rounded-full bg-emerald-500 animate-pulse" />
+                <span>Mohammadwadi, Pune • Open 24×7</span>
+              </motion.div>
+
+              {/* Headline */}
+              <motion.h1
+                initial={{ y: enterY * 1.4 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.55, ease: EASE_OUT, delay: 0.06 }}
+                className="text-[2.5rem] lg:text-[3.25rem] xl:text-[3.75rem] 2xl:text-[4.2rem] font-extrabold text-[#0a1120] tracking-[-0.035em] leading-[1.08]"
+              >
+                Accurate Diagnostics,{' '}
+                <span className="block mt-1">
+                  <span
+                    style={{
+                      background: 'linear-gradient(135deg, #003b95 0%, #024ebb 45%, #16a34a 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    Healthier You.
+                  </span>
+                </span>
+                <span className="sr-only"> Pathology Lab &amp; Blood Test at Home in Mohammadwadi, Sayyad Nagar, Pune</span>
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ y: enterY }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.12 }}
+                className="text-[14.5px] lg:text-[15.5px] xl:text-base text-slate-500 max-w-md lg:max-w-lg leading-[1.65] tracking-[-0.01em]"
+              >
+                Trusted pathology services with free home sample collection, 24/7 emergency availability, and fast reports delivered directly to WhatsApp.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: enterY }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.18 }}
+                className="flex items-center gap-3"
+              >
+                <motion.button
+                  whileTap={{ scale: 0.97 }}
+                  transition={EASE_SPRING}
+                  onClick={() => onBooking('General Test Booking')}
+                  className="flex items-center gap-2.5 px-7 py-3.5 rounded-[14px] bg-[#003b95] hover:bg-[#002f78] text-white font-bold text-sm tracking-[-0.01em] shadow-[0_4px_16px_rgba(0,59,149,0.25)] hover:shadow-[0_8px_24px_rgba(0,59,149,0.3)] transition-all duration-200"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>Book a Test</span>
+                  <ArrowRight className="w-4 h-4 opacity-50" />
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.97 }}
+                  transition={EASE_SPRING}
+                  onClick={() => onBooking('Home Sample Collection', 'home')}
+                  className="flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-white text-[#0a1120] font-semibold text-sm border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,0.04)] hover:border-blue-300 hover:bg-blue-50/30 transition-all duration-200"
+                >
+                  <Home className="w-4 h-4 text-[#003b95]" />
+                  <span>Home Collection</span>
+                </motion.button>
+              </motion.div>
+
+              {/* Trust row */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.3 }}
+                className="pt-5 border-t border-slate-100 flex items-center gap-6 text-slate-600"
+              >
+                {[
+                  { icon: Clock, text: '24×7 Service' },
+                  { icon: MessageCircle, text: 'Reports on WhatsApp' },
+                  { icon: ShieldCheck, text: 'Reliable & Accurate' },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-2 text-xs font-semibold tracking-tight">
+                    <Icon className="w-3.5 h-3.5 text-[#003b95]" />
+                    <span>{text}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* ── Right: Hero image — Fluid fit on all screens ── */}
+            <motion.div
+              initial={{ opacity: 0, x: reduceMotion ? 0 : 32, scale: enterScale }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.65, ease: EASE_OUT, delay: 0.08 }}
+              className="lg:col-span-7 xl:col-span-7 relative flex justify-end items-center w-full"
+            >
+              {!reduceMotion && (
+                <ParallaxLayer speed={0.08} className="absolute -right-16 top-1/2 -translate-y-1/2 w-[540px] h-[540px] bg-gradient-to-br from-blue-100/40 via-emerald-100/30 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+              )}
+
+              <div className="relative w-full max-w-[840px] xl:max-w-[900px] 2xl:max-w-[980px]">
+                {/* Image frame — finely balanced height so it never collides with taskbar */}
+                <div className="relative w-full h-[clamp(420px,56vh,620px)] xl:h-[clamp(460px,58vh,660px)] 2xl:h-[700px] rounded-[28px] lg:rounded-l-[220px] xl:rounded-l-[250px] lg:rounded-r-[32px] overflow-hidden bg-gradient-to-tr from-blue-50/80 via-white to-emerald-50/50 p-2 lg:p-2.5 border border-blue-200/50 shadow-[0_28px_72px_rgba(0,59,149,0.11)]">
+                  <div className="relative w-full h-full rounded-[24px] lg:rounded-l-[212px] xl:rounded-l-[242px] lg:rounded-r-[26px] overflow-hidden bg-white shadow-inner">
+                    <img
+                      src="/images/hero-lab-960.webp"
+            srcSet="/images/hero-lab-640.webp 640w, /images/hero-lab-960.webp 960w, /images/hero-lab.webp 1376w"
+            sizes="(min-width: 640px) 50vw, 100vw"
+            width="1376"
+            height="768"
+            fetchPriority="high"
+                      alt="Accurate Pathology — high-precision diagnostic laboratory in Hadapsar, Pune"
+                      className="w-full h-full object-cover object-[center_28%]"
+                    />
+                    {/* Cinematic overlays */}
+                    <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[#003b95]/12 via-[#003b95]/4 to-transparent pointer-events-none hidden lg:block" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a1120]/25 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

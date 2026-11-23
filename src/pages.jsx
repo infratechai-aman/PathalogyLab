@@ -3,29 +3,29 @@ import { Check, ChevronRight, Clock, Home, Search, Utensils, Users, ClipboardLis
 import { LAB, PACKAGES, TESTS_DIRECTORY, getPackage, includedList, testCount, waPackageMessage, formatPrice, packageImage } from './data/lab';
 import { packageFaqs } from './seo';
 import HeroSection from './components/HeroSection';
-import {
-  PackagesGrid, FullBodyHighlight, MonsoonBanner, HormonalSection, ComparisonTable, HowItWorks,
-  TrustBadges, HomeCollectionAreas, FAQSection, FAQList, Disclaimer,
-} from './components/HomeSections';
+import ServicesSection from './components/ServicesSection';
+import PackagesSection from './components/PackagesSection';
+import ProcessSection from './components/ProcessSection';
+import WhyUsSection from './components/WhyUsSection';
+import CTABanner from './components/CTABanner';
+import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
+import { FAQList, Disclaimer } from './components/HomeSections';
 import PackageCard, { Price } from './components/PackageCard';
 import { Container, CallButton, WhatsAppButton, PrimaryButton } from './components/ui';
 
-export function HomePage({ onBooking }) {
+/* Home page: the original design, rendered from src/data/lab.js */
+export function HomePage({ onBooking, onWhatsApp, onOpenPolicy }) {
   return (
     <>
       <HeroSection onBooking={onBooking} />
-      <PackagesGrid onBooking={onBooking} />
-      <FullBodyHighlight onBooking={onBooking} />
-      <MonsoonBanner onBooking={onBooking} />
-      <HormonalSection onBooking={onBooking} />
-      <ComparisonTable />
-      <HowItWorks />
-      <TrustBadges />
-      <HomeCollectionAreas />
+      <ServicesSection onBooking={onBooking} onWhatsApp={onWhatsApp} />
+      <PackagesSection onBooking={onBooking} />
+      <ProcessSection />
+      <WhyUsSection onBooking={onBooking} />
+      <CTABanner onBooking={onBooking} />
       <FAQSection />
-      <Container className="pb-4"><Disclaimer /></Container>
-      <ContactSection />
+      <ContactSection onOpenPolicy={onOpenPolicy} />
     </>
   );
 }
