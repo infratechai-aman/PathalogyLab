@@ -1,31 +1,27 @@
 # Accurate Pathology Laboratory
 
-> Trusted diagnostic pathology laboratory in Hadapsar, Pune offering blood tests, full body health checkups, and home sample collection. Open 24×7.
+> Pathology lab on Mohammad Wadi Road, Sayyad Nagar (Mohammadwadi, Hadapsar, Pune), open 24×7. Blood tests at home, health checkup packages from ₹299, a Full Body Profile (85 parameters) at ₹1800, a Monsoon Fever Panel (32 parameters, reports in 4 hours) and a Hormonal Evaluation (12 tests). Reports on WhatsApp. "Trusted Reports | Better Health".
 
-## About
+All types of blood tests are done here. Home sample collection is available on all packages; it is free for the Monsoon Fever Panel. Tests are for diagnostic purposes. Consult your doctor for interpretation.
 
-Accurate Pathology Laboratory provides reliable, affordable diagnostic services in the Hadapsar area of Pune, Maharashtra, India. We specialize in blood tests, health checkups, and pathology services with home sample collection and WhatsApp report delivery.
+## Health checkup packages
 
-## Services
+- [Complete Mini 1 — ₹299](https://www.accuratepathologylaboratory.in/packages/complete-mini-1): Sugar, Cholesterol, Thyroid, GP Kidney Test, CBC
+- [Complete Mini 2 — ₹599](https://www.accuratepathologylaboratory.in/packages/complete-mini-2): CBC, Sugar (Fasting), RFT, Lipid Profile, Urine Routine
+- [Complete Mini 3 — ₹999](https://www.accuratepathologylaboratory.in/packages/complete-mini-3): CBC, Sugar Fasting, LFT, RFT, Lipid Profile, Iron Profile, HbA1c, TFT, Urine Routine
+- [Complete Advance — ₹1499](https://www.accuratepathologylaboratory.in/packages/complete-advance): Mini 3 tests (without urine) plus Vitamin B12 and Vitamin D3
+- [Complete Gym Pro — ₹3399](https://www.accuratepathologylaboratory.in/packages/complete-gym-pro): adds Hs-CRP, Homocysteine and Testosterone Total
+- [Full Body Profile, 85 parameters — ₹1800 (MRP ₹2500)](https://www.accuratepathologylaboratory.in/packages/full-body-profile): 10–12 hours fasting compulsory
+- [Monsoon Fever Panel Advanced, 32 parameters — call for price](https://www.accuratepathologylaboratory.in/packages/monsoon-fever-panel): Dengue NS1, Dengue IgG/IgM, Malaria antigen, Typhoid IgG/IgM, CBC, CRP, ESR; reports within 4 hours
+- [Hormonal Evaluation, 12 tests — ₹2800](https://www.accuratepathologylaboratory.in/packages/hormonal-evaluation): Thyroid profile, AMH, FSH, LH, Prolactin, Estradiol, Progesterone, Testosterone, Free Testosterone, SHBG
 
-- Complete Blood Count (CBC) — ₹250
-- HbA1c & Blood Sugar — ₹350
-- Thyroid Profile (T3, T4, TSH) — ₹400
-- Lipid Profile (Cholesterol) — ₹450
-- Full Body Master Health Checkup (85+ Parameters) — ₹1,499
-- Advanced Diabetes & Metabolic Profile — ₹799
-- Senior Citizen Comprehensive Panel — ₹1,899
-- Home Sample Collection — Free with select packages
-- 24×7 Laboratory Testing
-- Reports on WhatsApp
+## Other pages
+
+- [All tests directory](https://www.accuratepathologylaboratory.in/tests): searchable list of every test and the packages that include it
 
 ## Contact
 
-- Phone: +91 88406 58081
+- Phone: +91 88406 58081, +91 80802 46449, +91 88881 55545, +91 77580 99626
 - WhatsApp: +91 88406 58081
 - Address: Lane No 15/A, Mohammad Wadi Road, Autadwadi Handewadi, Sayyad Nagar, Hadapsar, Pune 411028
 - Hours: Open 24×7
-
-## Links
-
-- Website: https://accuratepathologylab.in/

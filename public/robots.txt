@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://accuratepathologylab.in/sitemap.xml
+Sitemap: https://www.accuratepathologylaboratory.in/sitemap.xml

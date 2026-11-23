@@ -1,0 +1,10 @@
+Package photos: Unsplash (https://unsplash.com/license) — free for commercial use, attribution not required.
+complete-mini-1      https://unsplash.com/photos/2rNHliX6XHk
+complete-mini-2      https://unsplash.com/photos/sZO8ILzGKcg
+complete-mini-3      https://unsplash.com/photos/0jE8ynV4mis
+complete-advance     https://unsplash.com/photos/Qv8JEwWUhSI
+full-body-profile    https://unsplash.com/photos/Vw2O5QkDJQo
+complete-gym-pro     https://unsplash.com/photos/IYLLF511aOY
+monsoon-fever-panel  https://unsplash.com/photos/Z2pq_4mj6BI
+hormonal-evaluation  https://unsplash.com/photos/iyeUwItlIPk
+Replace with the lab's own photos when available (better for trust and Google Business Profile).

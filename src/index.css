@@ -1,166 +1,129 @@
 @import "tailwindcss";
 
-/* ─── Easing presets (Emil Kowalski: strong curves, not CSS built-ins) ─── */
+/* ─── Design tokens ─── */
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-brand: #003b95;
+  --color-brand-600: #024ebb;
+  --color-brand-50: #eff5ff;
+  --color-brand-100: #dbe8ff;
+  --color-ink: #0a1120;
+  --color-mint: #15803d;      /* green text on white: 5.0:1 (AA) */
+  --color-mint-500: #16a34a;
+  --color-mint-50: #ecfdf3;
+  --color-wa: #0e7a40;        /* WhatsApp green darkened: 5.4:1 with white text (AA) */
+}
+
 :root {
+  /* Emil Kowalski curves — never the CSS built-ins */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
-
-  /* Brand Palette — from actual logo: Royal Blue + Vibrant Accent Green */
-  --brand-50:  #eff6ff;
-  --brand-100: #dbeafe;
-  --brand-200: #bfdbfe;
-  --brand-300: #93c5fd;
-  --brand-400: #3b82f6;
-  --brand-500: #024ebb;
-  --brand-600: #003b95;
-  --brand-700: #003380;
-  --brand-800: #002866;
-  --brand-900: #001f4d;
-  --brand-950: #001433;
-  --accent-green: #16a34a;
-  --accent-green-bright: #22c55e;
-  --dark:      #0a1120;
-  --surface:   #f8fafc;
 }
 
-/* ─── Minimal scrollbar ─── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
-
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
-  font-family: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--surface);
+  background-color: #f7f9fc;
   color: #1e293b;
+  text-rendering: optimizeLegibility;
 }
 
-/* ─── Ambient mesh (subtle, branded Royal Blue & Green) ─── */
-.ambient-bg {
-  background-image:
-    radial-gradient(at 0% 0%, rgba(0, 59, 149, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 15%, rgba(22, 163, 74, 0.04) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(2, 78, 187, 0.04) 0px, transparent 55%);
-}
-
-/* ─── Parallax sections ─── */
-.parallax-hero {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-/* ─── Glass card — refined ─── */
-.glass-card {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  border: 1px solid rgba(255, 255, 255, 0.92);
-}
-
-/* ─── Selection ─── */
 ::selection { background: #003b95; color: #fff; }
 
-/* ─── Keyframes (transform + opacity only — Emil Kowalski) ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(-24px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 59, 149, 0.35); }
-  50%       { box-shadow: 0 0 0 10px rgba(0, 59, 149, 0); }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* ─── Focus rings: visible for keyboard, hidden for mouse ─── */
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid #024ebb;
+  outline-offset: 2px;
+  border-radius: 10px;
 }
 
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
-.animate-marquee { animation: marquee 28s linear infinite; }
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
-  background-size: 200% auto;
-  animation: shimmer 3s linear infinite;
+/* ─── Press feedback: every pressable element ─── */
+.press {
+  transition: transform 160ms var(--ease-out), background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+.press:active { transform: scale(0.97); }
+
+/* ─── Hover only on devices that really hover ─── */
+@media (hover: hover) and (pointer: fine) {
+  .lift { transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+  .lift:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -12px rgba(0, 59, 149, 0.18); }
+  .hover-brand:hover { background-color: #024ebb; }
+  .hover-soft:hover { background-color: #eff5ff; }
+  .hover-wa:hover { background-color: #0b6635; }
 }
 
-/* ─── Reduced motion — fewer/gentler, not zero (Emil + Apple) ─── */
-@media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .animate-marquee,
-  .animate-pulse-glow {
-    animation: none !important;
-  }
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+/* ─── Scroll reveal (progressive: content stays visible without JS) ─── */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 40ms);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ─── Enter animation for hero bits (CSS, runs before hydration) ─── */
+@keyframes enter {
+  from { opacity: 0; transform: translateY(8px); }
+}
+.enter { animation: enter 280ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 50ms); }
+
+/* ─── Accordion (FAQ + package details): CSS grid rows, interruptible transition ─── */
+.collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms var(--ease-out);
+}
+.collapse > div { overflow: hidden; min-height: 0; }
+.collapse > div > * { opacity: 0; transition: opacity 200ms var(--ease-out); }
+.collapse[data-open="true"] { grid-template-rows: 1fr; }
+.collapse[data-open="true"] > div > * { opacity: 1; }
+
+.chevron { transition: transform 200ms var(--ease-out); }
+[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+/* ─── Tab pill indicator ─── */
+.tab-pill { transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out); }
+
+/* ─── Sticky mobile bar: slides in once, from its own height ─── */
+@keyframes bar-in { from { transform: translateY(100%); } }
+.bar-in { animation: bar-in 300ms var(--ease-drawer) both; animation-delay: 150ms; }
+
+/* ─── Safe areas & scroll containers ─── */
+.safe-bottom { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ─── Skeleton shimmer for loading states ─── */
+@keyframes skeleton { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.skeleton {
+  background: linear-gradient(90deg, #eef2f7 25%, #f6f8fb 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.2s linear infinite;
+  border-radius: 12px;
 }
 
-/* ─── Hover gating — touch fires false hovers (Emil) ─── */
-@media (hover: none), (pointer: coarse) {
-  .hover-lift:hover {
-    transform: none;
-    box-shadow: none;
-  }
-}
-
-/* ─── Scroll progress bar ─── */
+/* ─── Legacy helpers still used by kept components ─── */
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
 #scroll-progress-bar {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+  width: 100%; transform-origin: 0 50%;
   background: linear-gradient(90deg, #003b95, #024ebb, #16a34a);
-  z-index: 9999;
-  transition: width 100ms linear;
 }
 
-/* ─── Counter ─── */
-.counter-animate {
-  animation: fadeUp 0.6s var(--ease-out) both;
+/* ─── Reduced motion: fade only, no movement ─── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { transform: none; transition: opacity 200ms ease; }
+  .enter { animation-name: fade; }
+  .bar-in { animation: none; }
+  .press:active { transform: none; }
+  .lift:hover { transform: none; }
+  .skeleton { animation: none; }
+  @keyframes fade { from { opacity: 0; } }
 }
 
-/* ─── Safe area inset (iPhone / Android nav) ─── */
-.safe-area-bottom {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-/* ─── Mobile scroll containers ─── */
-.mobile-cards-scroll {
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.mobile-cards-scroll::-webkit-scrollbar { display: none; }
-
-/* ─── Hover lift (desktop only) ─── */
-.hover-lift {
-  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-}
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 48px -8px rgba(10, 73, 46, 0.12), 0 8px 16px -4px rgba(0,0,0,0.04);
-}

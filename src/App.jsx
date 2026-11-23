@@ -1,78 +1,56 @@
-import { useState, useCallback } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import './index.css';
 
 import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import PackagesSection from './components/PackagesSection';
-import ProcessSection from './components/ProcessSection';
-import WhyUsSection from './components/WhyUsSection';
-import CTABanner from './components/CTABanner';
-import FAQSection from './components/FAQSection';
-import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import WhatsAppFAB from './components/WhatsAppFAB';
-import BookingModal from './components/BookingModal';
-import PolicyModal from './components/PolicyModal';
 import MobileBottomBar from './components/MobileBottomBar';
+import { useRevealOnScroll } from './components/ui';
+import { HomePage, PackagePage, TestsPage, NotFoundPage } from './pages';
+import { resolveRoute, getHead } from './seo';
+import { waPackageMessage } from './data/lab';
+import { initTracking } from './tracking';
 
-export default function App() {
-  const [modal, setModal] = useState({ open: false, preset: '', mode: 'lab' });
-  const [policyModal, setPolicyModal] = useState({ open: false, tab: 'privacy' });
+// Modals are not needed for first paint — load their code on first open.
+const BookingModal = lazy(() => import('./components/BookingModal'));
+const PolicyModal = lazy(() => import('./components/PolicyModal'));
 
-  const openBooking = useCallback((preset = '', mode = 'lab') => {
-    setModal({ open: true, preset, mode });
-  }, []);
+export default function App({ url }) {
+  const route = resolveRoute(url ?? (typeof window !== 'undefined' ? window.location.pathname : '/'));
+  const [modal, setModal] = useState({ open: false, preset: '', mode: 'home', loaded: false });
+  const [policy, setPolicy] = useState({ open: false, tab: 'privacy', loaded: false });
 
-  const closeBooking = useCallback(() => {
-    setModal(m => ({ ...m, open: false }));
-  }, []);
+  const openBooking = useCallback((preset = '', mode = 'home') => setModal({ open: true, preset, mode, loaded: true }), []);
+  const closeBooking = useCallback(() => setModal((m) => ({ ...m, open: false })), []);
+  const openPolicy = useCallback((tab = 'privacy') => setPolicy({ open: true, tab, loaded: true }), []);
+  const closePolicy = useCallback(() => setPolicy((p) => ({ ...p, open: false })), []);
 
-  const openPolicy = useCallback((tab = 'privacy') => {
-    setPolicyModal({ open: true, tab });
-  }, []);
+  useRevealOnScroll(route.path);
+  useEffect(() => initTracking(), []);
 
-  const closePolicy = useCallback(() => {
-    setPolicyModal(p => ({ ...p, open: false }));
-  }, []);
+  // Dev server has no prerendered <head>; keep the title right there too.
+  useEffect(() => {
+    document.title = getHead(route).title;
+  }, [route]);
 
-  const openWhatsApp = useCallback(() => {
-    const msg = encodeURIComponent("Hello Accurate Pathology Hadapsar, I want to receive my lab report or check report status.");
-    window.open(`https://wa.me/918840658081?text=${msg}`, '_blank');
-  }, []);
+  let page;
+  if (route.type === 'home') page = <HomePage onBooking={openBooking} />;
+  else if (route.type === 'package') page = <PackagePage pkg={route.pkg} onBooking={openBooking} />;
+  else if (route.type === 'tests') page = <TestsPage />;
+  else page = <NotFoundPage />;
 
   return (
-    <div className="ambient-bg min-h-screen">
+    <>
       <Navbar onBooking={openBooking} />
-
-      {/* pb-24 on mobile so content not hidden behind sticky bottom bar */}
-      <main className="pb-24 sm:pb-0">
-        <HeroSection onBooking={openBooking} />
-        <ServicesSection onBooking={openBooking} onWhatsApp={openWhatsApp} />
-        <PackagesSection onBooking={openBooking} />
-        <ProcessSection />
-        <WhyUsSection onBooking={openBooking} />
-        <CTABanner onBooking={openBooking} />
-        <FAQSection />
-        <ContactSection onOpenPolicy={openPolicy} />
-      </main>
-
+      <main id="main">{page}</main>
       <Footer onOpenPolicy={openPolicy} />
       <WhatsAppFAB />
-      <MobileBottomBar onBooking={openBooking} isModalOpen={modal.open} />
+      <MobileBottomBar hidden={modal.open} waMessage={route.pkg ? waPackageMessage(route.pkg) : undefined} />
 
-      <BookingModal
-        isOpen={modal.open}
-        onClose={closeBooking}
-        preset={modal.preset}
-        mode={modal.mode}
-      />
-
-      <PolicyModal
-        isOpen={policyModal.open}
-        onClose={closePolicy}
-        initialTab={policyModal.tab}
-      />
-    </div>
+      <Suspense fallback={null}>
+        {modal.loaded && <BookingModal isOpen={modal.open} onClose={closeBooking} preset={modal.preset} mode={modal.mode} />}
+        {policy.loaded && <PolicyModal isOpen={policy.open} onClose={closePolicy} initialTab={policy.tab} />}
+      </Suspense>
+    </>
   );
 }

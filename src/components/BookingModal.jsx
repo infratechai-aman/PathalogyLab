@@ -18,19 +18,13 @@ import {
   ChevronDown
 } from 'lucide-react';
 import { EASE_OUT } from '../animations';
+import { PACKAGES, formatPrice } from '../data/lab';
+import { trackLead } from '../tracking';
 
 const testOptions = [
-  { value: 'Full Body Master Health Checkup', label: 'Full Body Master Health Checkup (85+ Tests • ₹1,499)' },
-  { value: 'Advanced Diabetes & Metabolic Profile', label: 'Advanced Diabetes & Metabolic Profile (₹799)' },
-  { value: 'Senior Citizen Comprehensive Panel', label: 'Senior Citizen Comprehensive Panel (₹1,899)' },
-  { value: 'Complete Blood Count (CBC)', label: 'Complete Blood Count (CBC) (₹250)' },
-  { value: 'HbA1c & Fasting Blood Sugar', label: 'HbA1c & Fasting Blood Sugar (₹350)' },
-  { value: 'Thyroid Profile (T3, T4, TSH)', label: 'Thyroid Profile (T3, T4, TSH) (₹400)' },
-  { value: 'Lipid Profile (Cholesterol)', label: 'Lipid Profile (Cholesterol) (₹450)' },
-  { value: 'Liver Function Test (LFT)', label: 'Liver Function Test (LFT)' },
-  { value: 'Kidney Function Test (KFT)', label: 'Kidney Function Test (KFT)' },
-  { value: 'Urine Routine Analysis', label: 'Urine Routine Analysis' },
-  { value: 'Doctor Recommended Prescription Test', label: 'Doctor Advised Prescription Test' },
+  ...PACKAGES.map((p) => ({ value: p.name, label: `${p.name} (${p.price ? formatPrice(p.price) : 'Call for price'})` })),
+  { value: 'Individual Blood Test', label: 'Individual blood test (tell us on WhatsApp)' },
+  { value: 'Doctor Recommended Prescription Test', label: 'Doctor advised prescription test' },
 ];
 
 const timeSlots = [
@@ -66,7 +60,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
       setForm(f => ({ ...f, date: tomorrow.toISOString().split('T')[0] }));
 
       if (preset) {
-        const match = testOptions.find(t =>
+        const match = testOptions.find(t => t.value === preset) || testOptions.find(t =>
           t.value.toLowerCase().includes(preset.toLowerCase()) ||
           t.label.toLowerCase().includes(preset.toLowerCase())
         );
@@ -105,6 +99,7 @@ export default function BookingModal({ isOpen, onClose, preset, mode: initialMod
     if (mode === 'home' && form.address) msg += `Address: ${form.address}\n`;
     msg += `\nPlease confirm my slot. Thank you!`;
     const waUrl = `https://wa.me/918840658081?text=${encodeURIComponent(msg)}`;
+    trackLead('booking', { package_name: selectedTest, collection_mode: mode });
     setReceipt({ id: bookingRef, name: form.name, test: selectedTest, type: mode === 'home' ? 'Home Collection' : 'Lab Visit', waUrl });
     setSubmitted(true);
   };
